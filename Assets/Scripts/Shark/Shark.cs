@@ -37,7 +37,18 @@ public class Shark : MonoBehaviour
             GameEvents.CoinEat.Invoke();
             Destroy(other.gameObject);
         }
-      
+        if (other.gameObject.tag == "Spawner")
+        {
+            //disable the spawner when shark touches them
+            gameObject.SetActive(false);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Spawner")
+        {
+            gameObject.SetActive(true);
+        }
     }
     private void sharkShrink()
     {
