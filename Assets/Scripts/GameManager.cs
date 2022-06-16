@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public Coin coinPrefab; 
     private Coin currentCoin;
     private int thresholdCount; // Gives a score threshold for the tilt to occur at 5 point intervals
+    public EventTrigger.TriggerEvent TiltTrigger;
 
     private void OnEnable()
     {
@@ -68,9 +69,9 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
      //secret points that will move the platform every 5 points then reset
-        if (thresholdCount == 5)
+        if (thresholdCount == 7)
         {
-            //GameEvents.platformTiltTrigger.Invoke();
+            GameEvents.TiltTrigger.Invoke();
             thresholdCount = 0;
             Debug.Log("tilt");
         }
