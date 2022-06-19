@@ -6,7 +6,8 @@ public class Fish : MonoBehaviour
 {
     public Fish fishHead;
     public Fish fishTail;
-       
+
+       //summon fish halves
     public void FishCut()
     {
         Fish newhead = Instantiate(fishHead, transform.position, transform.rotation);
@@ -15,5 +16,10 @@ public class Fish : MonoBehaviour
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.right * 2f, ForceMode.Impulse);
         newhead.GetComponent<Rigidbody>().AddForce(Vector3.up * 5f, ForceMode.Impulse);
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * 5f, ForceMode.Impulse);
+    }
+
+    public void HalfFishCut()
+    {
+
     }
 }
