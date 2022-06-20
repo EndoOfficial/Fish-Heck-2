@@ -59,18 +59,11 @@ public class GameManager : MonoBehaviour
             //Use that transform position to clone a prefab coin to 
             currentCoin = Instantiate(coinPrefab);
             currentCoin.transform.position = randomPoint.position;
-            //currentCoin.transform.parent = Platform;
-            //currentCoin.transform.localScale = Vector3.one;
-
             //Give the player a point
             thresholdCount++;
             _playerScore++;
             this.score.text = _playerScore.ToString();
             Debug.Log("score" + _playerScore.ToString());
-        }
-        else
-        {
-            CoinSpawn();
         }
     }
 
@@ -85,13 +78,6 @@ public class GameManager : MonoBehaviour
             //Use that transform position to clone a prefab coin to 
             currentCoin = Instantiate(coinPrefab);
             currentCoin.transform.position = randomPoint.position;
-
-           // currentCoin.transform.localScale = Vector3.one;
-           // currentCoin.transform.parent = Platform;
-        }
-        else
-        {
-            CoinEaten();
         }
     }
     private void Update()
