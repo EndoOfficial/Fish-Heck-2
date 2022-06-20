@@ -8,6 +8,8 @@ TagManager:
   - Collectable
   - FishHalf
   - Spawner
+  - BigFish
+  - FishLast
   layers:
   - Default
   - TransparentFX
