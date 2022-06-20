@@ -34,7 +34,7 @@ public class Shark : MonoBehaviour
         }
         if (other.gameObject.tag == "Coin")
         { //The sharks hit the coin and they spawn somewhere else
-            GameEvents.CoinEat.Invoke();
+            GameEvents.CoinEat?.Invoke();
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Spawner")

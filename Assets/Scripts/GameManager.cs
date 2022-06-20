@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private Coin currentCoin;
     private int thresholdCount; // Gives a score threshold for the tilt to occur at 5 point intervals
     public EventTrigger.TriggerEvent TiltTrigger;
+    public Transform Platform;
 
     private void OnEnable()
     {
@@ -42,34 +43,40 @@ public class GameManager : MonoBehaviour
     }
     public void CoinSpawn()
     {
+    
         //Pick a random interger from the library then store that transform position
-        int randomInt = Random.Range(0, CSpawnPointsLibrary.Length); 
-        Vector3 randomPosition = CSpawnPointsLibrary[randomInt].position;
-
-        //Use that transform position to clone a prefab coin to 
-        currentCoin = Instantiate(coinPrefab);
-        currentCoin.transform.position = randomPosition;
-
-        //Give the player a point
-        _playerScore++;
-        thresholdCount++;
-        this.score.text = _playerScore.ToString();
-        Debug.Log("score" + _playerScore.ToString());
+        int randomInt = Random.Range(0, CSpawnPointsLibrary.Length);
+        Transform randomPoint = CSpawnPointsLibrary[randomInt];
+        if (randomPoint.gameObject.activeSelf)
+        {
+            //Use that transform position to clone a prefab coin to 
+            currentCoin = Instantiate(coinPrefab);
+            currentCoin.transform.position = randomPoint.position;
+            //Give the player a point
+            thresholdCount++;
+            _playerScore++;
+            this.score.text = _playerScore.ToString();
+            Debug.Log("score" + _playerScore.ToString());
+        }
     }
+
+       
     public void CoinEaten()
     {
         //Pick a random interger from the library then store that transform position
         int randomInt = Random.Range(0, CSpawnPointsLibrary.Length);
-        Vector3 randomPosition = CSpawnPointsLibrary[randomInt].position;
-
-        //Use that transform position to clone a prefab coin to 
-        currentCoin = Instantiate(coinPrefab);
-        currentCoin.transform.position = randomPosition;
+        Transform randomPoint = CSpawnPointsLibrary[randomInt];
+        if (randomPoint.gameObject.activeSelf)
+        {
+            //Use that transform position to clone a prefab coin to 
+            currentCoin = Instantiate(coinPrefab);
+            currentCoin.transform.position = randomPoint.position;
+        }
     }
     private void Update()
     {
      //secret points that will move the platform every 5 points then reset
-        if (thresholdCount == 7)
+        if (thresholdCount == 5)
         {
             GameEvents.TiltTrigger.Invoke();
             thresholdCount = 0;
