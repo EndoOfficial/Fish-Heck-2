@@ -13,6 +13,6 @@ public static class GameEvents
     public static Action platformTiltTrigger; //score has reached threshold to tilt the platform
     public static Action FishScore; //add score when cut fish
     public static Action TiltTrigger; //platform tilting
-    public static Action LoseScore; //minus score by 1
+    public static Action<int> LoseScore; //minus score by 1
     public static Action GameOver; //Game Over
 }

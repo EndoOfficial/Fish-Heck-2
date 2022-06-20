@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class KillFish : MonoBehaviour
 {
-    private float big = 10;
-    private float small = 5;
+    private int big = 10;
+    private int small = 5;
     private void OnTriggerEnter(Collider other)
     {
         var fish = other.GetComponent<Fish>();
@@ -14,12 +14,12 @@ public class KillFish : MonoBehaviour
         {
             if (other.CompareTag("BigFish"))
             {
-                GameEvents.LoseScore?.Invoke();
+                GameEvents.LoseScore?.Invoke(big);
                 GameEvents.GameOver?.Invoke();
             }
             else if (other.CompareTag("FishHalf"))
             {
-                GameEvents.LoseScore?.Invoke();
+                GameEvents.LoseScore?.Invoke(small);
             }
             else if (other.CompareTag("FishLast"))
             {
