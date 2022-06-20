@@ -15,5 +15,4 @@ public static class GameEvents
     public static Action TiltTrigger; //platform tilting
     public static Action<int> LoseScore; //minus score by 1
     public static Action GameOver; //Game Over
-    public static Action<int> Getpoint;
 }

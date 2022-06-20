@@ -7,7 +7,6 @@ public class Knife : MonoBehaviour
 {
     public Camera cam;
     public LayerMask fish;
-    public int scoreType;
 
     //Events
     private void OnEnable()
@@ -45,17 +44,12 @@ public class Knife : MonoBehaviour
                     //when fish hit, cut fish
                     hitfish.FishCut();
                     Destroy(hitinfo.transform.gameObject);
-                    scoreType = 1;
-                    GameEvents.FishScore?.Invoke();
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("FishHalf") && hitfish.canCut)
                 {
                     //when fish hit, cut fish
                     hitfish.HalfFishCut();
                     Destroy(hitinfo.transform.gameObject);
-                    GameEvents.FishScore?.Invoke();
-                    scoreType = 1;
-                    GameEvents.Getpoint?.Invoke(scoreType);
                 }
             }
         }

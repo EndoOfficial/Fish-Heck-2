@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     }
     public void LoseScore(int fishType)
     {
-        _playerScore = _playerScore + fishType;
+        _playerScore = _playerScore - fishType;
         this.score.text = _playerScore.ToString();
     }
 
