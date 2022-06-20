@@ -22,17 +22,24 @@ public class GameManager : MonoBehaviour
         GameEvents.CoinScore += CoinSpawn;
         GameEvents.CoinEat += CoinEaten;
         GameEvents.FishScore += FishScore;
+        GameEvents.LoseScore += LoseScore;
     }
     private void OnDisable()
     {
         GameEvents.CoinScore -= CoinSpawn;
-        GameEvents.CoinEat += CoinEaten;
+        GameEvents.CoinEat -= CoinEaten;
         GameEvents.FishScore -= FishScore;
+        GameEvents.LoseScore -= LoseScore;
     }
 
     public void FishScore()
     { 
         _playerScore++;
+        this.score.text = _playerScore.ToString();
+    }
+    public void LoseScore(int fishType)
+    {
+        _playerScore = _playerScore - fishType;
         this.score.text = _playerScore.ToString();
     }
 

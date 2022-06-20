@@ -36,14 +36,21 @@ public class Knife : MonoBehaviour
         RaycastHit hitinfo;
         if (Physics.Raycast(ray, out hitinfo, 10f, fish))
         {
-            GameEvents.OnFishHit?.Invoke(hitinfo);
             var hitfish = hitinfo.transform.gameObject.GetComponent<Fish>();
             if(hitfish != null)
             {
-                //when fish hit, cut fish
-                hitfish.FishCut();
-                Destroy(hitinfo.transform.gameObject);
-                GameEvents.FishScore?.Invoke();
+                if (hitinfo.transform.gameObject.CompareTag("BigFish"))
+                {
+                    //when fish hit, cut fish
+                    hitfish.FishCut();
+                    Destroy(hitinfo.transform.gameObject);
+                }
+                else if (hitinfo.transform.gameObject.CompareTag("FishHalf") && hitfish.canCut)
+                {
+                    //when fish hit, cut fish
+                    hitfish.HalfFishCut();
+                    Destroy(hitinfo.transform.gameObject);
+                }
             }
         }
         else
