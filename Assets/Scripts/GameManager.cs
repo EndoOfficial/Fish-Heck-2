@@ -16,31 +16,27 @@ public class GameManager : MonoBehaviour
     private int thresholdCount; // Gives a score threshold for the tilt to occur at 5 point intervals
     public EventTrigger.TriggerEvent TiltTrigger;
     public Transform Platform;
+    public int isScore;
 
     private void OnEnable()
     {
         GameEvents.CoinScore += CoinSpawn;
         GameEvents.CoinEat += CoinEaten;
         GameEvents.FishScore += FishScore;
-        GameEvents.LoseScore += LoseScore;
     }
     private void OnDisable()
     {
         GameEvents.CoinScore -= CoinSpawn;
         GameEvents.CoinEat -= CoinEaten;
         GameEvents.FishScore -= FishScore;
-        GameEvents.LoseScore -= LoseScore;
     }
 
-    public void FishScore()
+    public void FishScore(int setScore)
     { 
-        _playerScore++;
+        _playerScore += setScore;
         this.score.text = _playerScore.ToString();
-    }
-    public void LoseScore(int fishType)
-    {
-        _playerScore = _playerScore - fishType;
-        this.score.text = _playerScore.ToString();
+        isScore = setScore;
+        GameEvents.DoPoints?.Invoke(isScore);
     }
 
     public void RestartGame()

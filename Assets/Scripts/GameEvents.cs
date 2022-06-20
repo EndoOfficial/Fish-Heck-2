@@ -11,8 +11,8 @@ public static class GameEvents
     public static Action CoinScore; //Player touches coin
     public static Action CoinEat; //When shark eats the coin
     public static Action platformTiltTrigger; //score has reached threshold to tilt the platform
-    public static Action FishScore; //add score when cut fish
+    public static Action<int> FishScore; //add score when cut fish
     public static Action TiltTrigger; //platform tilting
-    public static Action<int> LoseScore; //minus score by 1
     public static Action GameOver; //Game Over
+    public static Action<int> DoPoints; //visual points 
 }
