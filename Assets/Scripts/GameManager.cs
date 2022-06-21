@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public int _playerScore;
     public EventTrigger.TriggerEvent CoinScore;
     public Transform[] CSpawnPointsLibrary;
-    public Coin coinPrefab; 
+    public Coin coinPrefab;
     private Coin currentCoin;
     private int thresholdCount; // Gives a score threshold for the tilt to occur at 5 point intervals
     public EventTrigger.TriggerEvent TiltTrigger;
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void FishScore(int setScore)
-    { 
+    {
         _playerScore += setScore;
         this.score.text = _playerScore.ToString();
         isScore = setScore;
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     }
     public void CoinSpawn()
     {
-    
+
         //Pick a random interger from the library then store that transform position
         int randomInt = Random.Range(0, CSpawnPointsLibrary.Length);
         Transform randomPoint = CSpawnPointsLibrary[randomInt];
@@ -63,7 +63,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-       
+
     public void CoinEaten()
     {
         //Pick a random interger from the library then store that transform position
@@ -78,13 +78,22 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-     //secret points that will move the platform every 5 points then reset
+        //secret points that will move the platform every 5 points then reset
         if (thresholdCount == 5)
         {
             GameEvents.TiltTrigger.Invoke();
             thresholdCount = 0;
             Debug.Log("tilt");
         }
-        
+
     }
+    public void LoadSharkLevel()
+    {
+        SceneManager.LoadScene("Shark Bait");
+    }
+    public void LoadFishLevel()
+    {
+        SceneManager.LoadScene("Fish Ninja");
+    }
+
 }
