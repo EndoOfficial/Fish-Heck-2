@@ -87,6 +87,7 @@ public class GameManager : MonoBehaviour
         }
 
     }
+    //load diffent levels in the main menu
     public void LoadSharkLevel()
     {
         SceneManager.LoadScene("Shark Bait");

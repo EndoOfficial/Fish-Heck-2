@@ -11,7 +11,7 @@ public class Shark : MonoBehaviour
 
     private void Awake()
     { //the rate at which the the shark grows
-        scaleChange = new Vector3(0.2f, 0.2f, 0.2f);
+        scaleChange = new Vector3(0.05f, 0.05f, 0.05f);
     }
     private void Update()
     { // shark growing over time
