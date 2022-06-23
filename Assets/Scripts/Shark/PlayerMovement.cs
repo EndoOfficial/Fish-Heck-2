@@ -10,7 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public Rigidbody _rigidbody;
     private Vector3 vctr;
-
+    public AudioSource source;
+    public AudioClip chomp;
     private void OnEnable()
     {
         GameEvents.OnSwipeEnd += OnSwipeEnd;
@@ -32,5 +33,12 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         _rigidbody.AddForce(Vector3.down);
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+       if (other.gameObject.tag == "Coin")
+        {
+            source.PlayOneShot(chomp);
+        }
     }
 }

@@ -8,7 +8,8 @@ public class Shark : MonoBehaviour
 {
     private Vector3 scaleChange;
     public GameObject shark;
-
+    public AudioClip munch;
+    public AudioSource source;
     private void Awake()
     { //the rate at which the the shark grows
         scaleChange = new Vector3(0.05f, 0.05f, 0.05f);
@@ -33,9 +34,10 @@ public class Shark : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         if (other.gameObject.tag == "Coin")
-        { //The sharks hit the coin and they spawn somewhere else
+        { //The sharks hit the coin and they spawn somewhere else, and plays a sound
             GameEvents.CoinEat?.Invoke();
             Destroy(other.gameObject);
+            source.PlayOneShot(munch);
         }
         if (other.gameObject.tag == "Spawner")
         {  //disable the spawner when shark touches them

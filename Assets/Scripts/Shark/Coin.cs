@@ -15,7 +15,7 @@ public class Coin : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-
+        // send event for scoring
         if (other.gameObject.tag == "Player")
         {
             GameEvents.CoinScore?.Invoke();
