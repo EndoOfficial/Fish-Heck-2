@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: abc31a01d65bb23489a04ba15582805c
+guid: 3048396f03d363f4aa5b1c8a704315aa
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - fishPrefab: {fileID: 8998616951032430037, guid: 2fefe20dd591f3f4a95645c5cfd83ab5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

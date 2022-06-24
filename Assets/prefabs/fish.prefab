@@ -138,4 +138,5 @@ MonoBehaviour:
   fishLast1: {fileID: 1504990752863214150, guid: 20ee4d39e436917448bc1bac4921c773, type: 3}
   fishLast2: {fileID: 1504990752863214150, guid: f90b44e323e6bb549af7b547d95565f4, type: 3}
   canCut: 1
-  graceTime: 0.1
+  graceTime: 1
+  startForce: 13

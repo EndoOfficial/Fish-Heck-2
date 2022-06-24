@@ -14,5 +14,4 @@ public static class GameEvents
     public static Action<int> FishScore; //add score when cut fish
     public static Action TiltTrigger; //platform tilting
     public static Action GameOver; //Game Over
-    public static Action<int> DoPoints; //visual points 
 }

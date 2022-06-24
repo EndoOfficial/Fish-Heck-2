@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
         _playerScore += setScore;
         this.score.text = _playerScore.ToString();
         isScore = setScore;
-        GameEvents.DoPoints?.Invoke(isScore);
     }
 
     public void RestartGame()
