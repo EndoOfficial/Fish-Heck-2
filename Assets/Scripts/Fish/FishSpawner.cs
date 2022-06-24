@@ -18,15 +18,24 @@ public class FishSpawner : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.GameOver += GameOver;
+        GameEvents.Difficulty += Difficulty;
+
     }
     private void OnDisable()
     {
         GameEvents.GameOver -= GameOver;
+        GameEvents.Difficulty += Difficulty;
     }
 
     private void GameOver()
     {
         StopAllCoroutines();
+    }
+
+    private void Difficulty()
+    {
+        maxDelay = maxDelay * 0.9f;
+
     }
 
     IEnumerator SpawnFish()

@@ -36,6 +36,15 @@ public class GameManager : MonoBehaviour
         _playerScore += setScore;
         this.score.text = _playerScore.ToString();
         isScore = setScore;
+
+        if (_playerScore >= 200 && _playerScore <= 202)
+        {
+            GameEvents.Difficulty?.Invoke();
+        }
+        else if (_playerScore >= 400 && _playerScore <= 402)
+        {
+            GameEvents.Difficulty?.Invoke();
+        }
     }
 
     public void RestartGame()

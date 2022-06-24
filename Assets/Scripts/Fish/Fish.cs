@@ -23,7 +23,7 @@ public class Fish : MonoBehaviour
 
     private void OnDisable()
     {
-        GameEvents.GameOver += GameOver;
+        GameEvents.GameOver -= GameOver;
     }
 
     private void Start()
@@ -32,7 +32,7 @@ public class Fish : MonoBehaviour
         {
             canCut = true;
             rb = GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * -startForce, ForceMode.Impulse);
+            rb.AddForce(transform.forward * -Random.Range(startForce -1, startForce +1), ForceMode.Impulse);
         }
         else if (gameObject.CompareTag("FishHalf"))
         {
