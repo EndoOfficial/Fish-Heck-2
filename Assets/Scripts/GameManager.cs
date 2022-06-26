@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public Transform Platform;
     public int isScore;
 
+    public GameObject pauseMenuUI;
+
     private void OnEnable()
     {
         GameEvents.CoinScore += CoinSpawn;
@@ -47,11 +49,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void RestartGame()
-    {
-        // restarts game w/ the reset button
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+
     public void CoinSpawn()
     {
 
@@ -95,14 +93,40 @@ public class GameManager : MonoBehaviour
         }
 
     }
-    //load diffent levels in the main menu
+    //Different UI functions, all are accessed through OnClicks
     public void LoadSharkLevel()
     {
         SceneManager.LoadScene("Shark Bait");
+        Time.timeScale = 1f;
     }
     public void LoadFishLevel()
     {
         SceneManager.LoadScene("Fish Ninja");
+        Time.timeScale = 1f;
     }
-
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+        Time.timeScale = 1f;
+    }
+    public void PauseGame()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+    }
+    public void ResumeGame()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+    }
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
+    public void RestartGame()
+    {
+        // restarts game w/ the reset button
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1f;
+    }
 }
