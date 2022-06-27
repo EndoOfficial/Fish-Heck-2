@@ -10,6 +10,9 @@ TagManager:
   - Spawner
   - BigFish
   - FishLast
+  - Pufferfish
+  - PufferHalf
+  - PufferPoison
   layers:
   - Default
   - TransparentFX

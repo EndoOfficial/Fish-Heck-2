@@ -137,6 +137,9 @@ MonoBehaviour:
   fishTail: {fileID: 3188159147378144364, guid: 50b054e1d8ae5be42922a76288d7519d, type: 3}
   fishLast1: {fileID: 1504990752863214150, guid: 20ee4d39e436917448bc1bac4921c773, type: 3}
   fishLast2: {fileID: 1504990752863214150}
+  puffer: {fileID: 203849758358918894, guid: 6efe93dcc72e1e246a6f50ce597f37a4, type: 3}
+  pufferHalf: {fileID: 8618202144774288444, guid: 8dc34a0554c4c854e92421f49cd0043e, type: 3}
+  pufferPoison: {fileID: 3188159147378144364, guid: d4f7c6a3a27d08d4aa5ad3658317a002, type: 3}
   canCut: 0
   graceTime: 0.3
   startForce: 15

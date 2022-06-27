@@ -5,11 +5,15 @@ using UnityEngine;
 public class FishSpawner : MonoBehaviour
 {
     public GameObject fishPrefab;
+    public GameObject pufferPrefab;
     public Transform[] spawnPoints;
 
     public float minDelay = .1f;
     public float maxDelay = 1f;
     private bool gameOver = false;
+    
+    public float pufferChance;
+
     private void Start()
     {
         StartCoroutine(SpawnFish());
@@ -19,16 +23,20 @@ public class FishSpawner : MonoBehaviour
     {
         GameEvents.GameOver += GameOver;
         GameEvents.Difficulty += Difficulty;
-
+        GameEvents.Pause += Pause;
+        GameEvents.Resume += Resume;
     }
     private void OnDisable()
     {
         GameEvents.GameOver -= GameOver;
-        GameEvents.Difficulty += Difficulty;
+        GameEvents.Difficulty -= Difficulty;
+        GameEvents.Pause -= Pause;
+        GameEvents.Resume -= Resume;
     }
 
     private void GameOver()
     {
+        gameOver = true;
         StopAllCoroutines();
     }
 
@@ -38,18 +46,40 @@ public class FishSpawner : MonoBehaviour
 
     }
 
+    private void Pause()
+    {
+        StopAllCoroutines();
+    }
+    
+
+    private void Resume()
+    {
+        StartCoroutine(SpawnFish());
+    }
+
     IEnumerator SpawnFish()
     {
         while (gameOver == false)
         {
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSecondsRealtime(delay);
-            
-            //spawn fish
-            int spawnIndex = Random.Range(0, spawnPoints.Length);
-            Transform spawnPoint = spawnPoints[spawnIndex];
 
-            Instantiate(fishPrefab, spawnPoint.position, spawnPoint.rotation);
+            if (Random.Range(0, 99) >= pufferChance) 
+            {
+
+                //spawn fish
+                int spawnIndex = Random.Range(0, spawnPoints.Length);
+                Transform spawnPoint = spawnPoints[spawnIndex];
+
+                Instantiate(fishPrefab, spawnPoint.position, spawnPoint.rotation);
+            }
+            else
+            {
+                int spawnIndex = Random.Range(0, spawnPoints.Length);
+                Transform spawnPoint = spawnPoints[spawnIndex];
+
+                Instantiate(pufferPrefab, spawnPoint.position, spawnPoint.rotation);
+            }
         }
     }
 }

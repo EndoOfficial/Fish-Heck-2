@@ -7,7 +7,7 @@ public class Knife : MonoBehaviour
 {
     public Camera cam;
     public LayerMask fish;
-    private int setScore = 0;
+    public GameObject trail;
 
     //Events
     private void OnEnable()
@@ -24,6 +24,7 @@ public class Knife : MonoBehaviour
     private void OnSwipeMove(Vector2 MovePosition, Vector2 MoveDirestion, float MoveSpeed, int TouchCount)
     {
         DoRaycast(MovePosition, fish);
+        trail.transform.position = Camera.main.ScreenToWorldPoint(MovePosition);
     }
 
     //raycast script
@@ -45,16 +46,22 @@ public class Knife : MonoBehaviour
                     //when fish hit, cut fish
                     hitfish.FishCut();
                     Destroy(hitinfo.transform.gameObject);
-                    setScore = 1;
-                    GameEvents.FishScore?.Invoke(setScore);
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("FishHalf") && hitfish.canCut)
                 {
                     //when fish hit, cut fish
                     hitfish.HalfFishCut();
                     Destroy(hitinfo.transform.gameObject);
-                    setScore = 1;
-                    GameEvents.FishScore?.Invoke(setScore);
+                }
+                else if (hitinfo.transform.gameObject.CompareTag("Pufferfish"))
+                {
+                    hitfish.Puffercut();
+                    Destroy(hitinfo.transform.gameObject);
+                }
+                else if (hitinfo.transform.gameObject.CompareTag("PufferPoison") && hitfish.canCut)
+                {
+                    GameEvents.loseLife?.Invoke();
+                    Destroy(hitinfo.transform.gameObject);
                 }
             }
         }

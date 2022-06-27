@@ -16,6 +16,6 @@ public class UiManager : MonoBehaviour
     }
     private void GameOver()
     {
-        GameOverImage.enabled = !GameOverImage.enabled;
+        GameOverImage.enabled = true;
     }
 }

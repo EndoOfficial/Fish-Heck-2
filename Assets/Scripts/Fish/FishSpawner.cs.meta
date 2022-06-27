@@ -5,6 +5,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - fishPrefab: {fileID: 8998616951032430037, guid: 2fefe20dd591f3f4a95645c5cfd83ab5, type: 3}
+  - pufferPrefab: {fileID: 8998616951032430037, guid: 6efe93dcc72e1e246a6f50ce597f37a4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

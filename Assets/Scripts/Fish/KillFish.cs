@@ -13,18 +13,20 @@ public class KillFish : MonoBehaviour
         {
             if (other.CompareTag("BigFish"))
             {
-                setScore = -6;
-                GameEvents.FishScore?.Invoke(setScore);
-                GameEvents.GameOver?.Invoke();
+                GameEvents.loseLife?.Invoke();
             }
-            else if (other.CompareTag("FishHalf"))
+            else if (other.CompareTag("Pufferfish"))
             {
-                setScore = -3;
-                GameEvents.FishScore?.Invoke(setScore);
+                GameEvents.loseLife?.Invoke();
             }
             else if (other.CompareTag("FishLast"))
             {
                 setScore = 1;
+                GameEvents.FishScore?.Invoke(setScore);
+            }
+            else if (other.CompareTag("PufferPoison"))
+            {
+                setScore = 5;
                 GameEvents.FishScore?.Invoke(setScore);
             }
             Destroy(other.gameObject);
