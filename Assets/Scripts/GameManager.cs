@@ -22,14 +22,12 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvents.CoinScore += CoinSpawn;
-        GameEvents.CoinEat += CoinEaten;
+        GameEvents.CoinScore += CoinScoreUI;
         GameEvents.FishScore += FishScore;
     }
     private void OnDisable()
     {
-        GameEvents.CoinScore -= CoinSpawn;
-        GameEvents.CoinEat -= CoinEaten;
+        GameEvents.CoinScore -= CoinScoreUI;
         GameEvents.FishScore -= FishScore;
     }
 
@@ -50,38 +48,15 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void CoinSpawn()
+    public void CoinScoreUI()
     {
-
-        //Pick a random interger from the library then store that transform position
-        int randomInt = Random.Range(0, CSpawnPointsLibrary.Length);
-        Transform randomPoint = CSpawnPointsLibrary[randomInt];
-        if (randomPoint.gameObject.activeSelf)
-        {
-            //Use that transform position to clone a prefab coin to 
-            currentCoin = Instantiate(coinPrefab);
-            currentCoin.transform.position = randomPoint.position;
-            //Give the player a point
-            thresholdCount++;
-            _playerScore++;
-            this.score.text = _playerScore.ToString();
-            Debug.Log("score" + _playerScore.ToString());
-        }
+        thresholdCount++;
+        _playerScore++;
+        this.score.text = _playerScore.ToString();
+        Debug.Log("score" + _playerScore.ToString());
     }
 
 
-    public void CoinEaten()
-    {
-        //Pick a random interger from the library then store that transform position
-        int randomInt = Random.Range(0, CSpawnPointsLibrary.Length);
-        Transform randomPoint = CSpawnPointsLibrary[randomInt];
-        if (randomPoint.gameObject.activeSelf)
-        {
-            //Use that transform position to clone a prefab coin to 
-            currentCoin = Instantiate(coinPrefab);
-            currentCoin.transform.position = randomPoint.position;
-        }
-    }
     private void Update()
     {
         //secret points that will move the platform every 5 points then reset
