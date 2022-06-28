@@ -336,10 +336,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!65 &64633422
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -542,10 +549,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &213549121
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,10 +688,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!65 &235017135
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1089,10 +1110,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &412243642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,10 +1302,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &464433506
 GameObject:
   m_ObjectHideFlags: 0
@@ -1339,10 +1374,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &500942127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,10 +1433,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!65 &500942130
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2190,10 +2239,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &656712267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7630850328511293369, guid: 09557da7b8ba49449be91a38789e2ebc, type: 3}
@@ -2835,10 +2891,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!65 &753998066
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2861,7 +2924,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 757840334}
-  - component: {fileID: 757840333}
+  - component: {fileID: 757840335}
   m_Layer: 0
   m_Name: CoinSpawner
   m_TagString: Untagged
@@ -2869,25 +2932,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &757840333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 757840332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa2c24366060e14e8e6e31baf1bff75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Platform: {fileID: 1231432795}
-  Iceberg: {fileID: 1474565406}
-  Coin: {fileID: 4087739759223365617, guid: 06e3b0c9b710de9468872a346243c320, type: 3}
-  hitLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  MaxCoins: 5
 --- !u!4 &757840334
 Transform:
   m_ObjectHideFlags: 0
@@ -2903,6 +2947,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &757840335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757840332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7aed359deabbba04da406f3463cb400d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 446427784768642632}
+  Platform: {fileID: 1231432795}
+  Iceberg: {fileID: 1640185881354386793}
+  Coin: {fileID: 4087739759223365617, guid: 06e3b0c9b710de9468872a346243c320, type: 3}
+  hitLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!1001 &780511532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3040,10 +3103,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!65 &812904188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3105,10 +3175,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!65 &844913572
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3183,10 +3260,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &922308356
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,10 +3332,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &922537541
 GameObject:
   m_ObjectHideFlags: 0
@@ -3313,10 +3404,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &994624457
 GameObject:
   m_ObjectHideFlags: 0
@@ -3378,10 +3476,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &1077123993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3510,10 +3615,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &1110168277
 GameObject:
   m_ObjectHideFlags: 0
@@ -3904,10 +4016,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &1434665059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3969,15 +4088,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
---- !u!1 &1474565406 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4423502202655427674, guid: 537b6332b04a21d4195bcc61e850020b, type: 3}
-  m_PrefabInstance: {fileID: 3237377652589166086}
-  m_PrefabAsset: {fileID: 0}
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &1475283173
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,10 +4147,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!65 &1475283176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4519,10 +4647,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &1981918459
 GameObject:
   m_ObjectHideFlags: 0
@@ -4584,10 +4719,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &2030002330
 GameObject:
   m_ObjectHideFlags: 0
@@ -4649,10 +4791,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &2081173996
 GameObject:
   m_ObjectHideFlags: 0
@@ -4830,10 +4979,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!65 &2082525062
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4908,10 +5064,17 @@ MonoBehaviour:
   Platform: {fileID: 0}
   Iceberg: {fileID: 0}
   Coin: {fileID: 0}
+  currentCoin: {fileID: 0}
+  playArea: {x: 0, y: 0, z: 0}
+  coinRadius: 0
+  raycastSize: 1.5
   hitLayerMask:
-    serializedVersion: 2
     m_Bits: 0
+  activeCoin: 0
   MaxCoins: 5
+  widthx: 0
+  widthy: 0
+  widthz: 0
 --- !u!1 &446427784768642632 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9176628804913258758, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
