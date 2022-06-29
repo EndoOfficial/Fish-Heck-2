@@ -79,8 +79,9 @@ public class CoinSpawner : MonoBehaviour
 
     private void SpawnCoin()
     {
-        currentCoin = Instantiate(Coin, transform);
+        currentCoin = Instantiate(Coin, Iceberg.transform);
         currentCoin.transform.position = VacantRandomPosition();
+        currentCoin.transform.localScale = new Vector3(0.13f , 0.13f, 0.13f);
     }
    
     private void OnDrawGizmos()

@@ -29,17 +29,17 @@ public class Shark : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     { //Sharks eating various things
 
-     /*   if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         { //Shark eating the player, will likely be changed to facilitate a lose screen 
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        }*/
-       /* if (other.gameObject.tag == "Coin")
+        }
+        if (other.gameObject.tag == "Coin")
         { //The sharks hit the coin and they spawn somewhere else, and plays a sound
             GameEvents.CoinEat?.Invoke();
             Debug.Log("shark coin eat");
             Destroy(other.gameObject);
             source.PlayOneShot(munch);
-        }*/
+        }
         if (other.gameObject.tag == "Spawner")
         {  //disable the spawner when shark touches them
             gameObject.SetActive(false);
