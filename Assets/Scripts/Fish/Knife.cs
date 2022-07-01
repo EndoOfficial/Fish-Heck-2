@@ -8,18 +8,31 @@ public class Knife : MonoBehaviour
     public Camera cam;
     public LayerMask fish;
     public GameObject trail;
-
+    public ParticleSystem knife;
     //Events
     private void OnEnable()
     {
         GameEvents.OnSwipeMove += OnSwipeMove;
+        GameEvents.OnSwipeStart += OnSwipeStart;
+        GameEvents.OnSwipeEnd += OnSwipeEnd;
     }
 
     private void OnDisable()
     {
         GameEvents.OnSwipeMove -= OnSwipeMove;
+        GameEvents.OnSwipeStart -= OnSwipeStart;
+        GameEvents.OnSwipeEnd -= OnSwipeEnd;
     }
 
+    private void OnSwipeStart(Vector2 SP, int TC)
+    {
+        trail.SetActive(true);
+    }
+    private void OnSwipeEnd(Vector2 a, Vector2 b, float c, int d)
+    {
+
+        trail.SetActive(false);
+    }
     //when event is called do raycast on move position
     private void OnSwipeMove(Vector2 MovePosition, Vector2 MoveDirestion, float MoveSpeed, int TouchCount)
     {
@@ -60,7 +73,7 @@ public class Knife : MonoBehaviour
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("PufferPoison") && hitfish.canCut)
                 {
-                    GameEvents.loseLife?.Invoke();
+                    GameEvents.LoseLife?.Invoke();
                     Destroy(hitinfo.transform.gameObject);
                 }
             }

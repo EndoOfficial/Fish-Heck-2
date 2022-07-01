@@ -13,6 +13,7 @@ TagManager:
   - Pufferfish
   - PufferHalf
   - PufferPoison
+  - Plate
   layers:
   - Default
   - TransparentFX
