@@ -61,9 +61,11 @@ public class FishSpawner : MonoBehaviour
     {
         while (gameOver == false)
         {
+            // get a number from 0-99
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSecondsRealtime(delay);
 
+            //if the random number is higher than the pufferchance
             if (Random.Range(0, 99) >= pufferChance) 
             {
 
@@ -75,6 +77,7 @@ public class FishSpawner : MonoBehaviour
             }
             else
             {
+                //spawn pufferfish
                 int spawnIndex = Random.Range(0, spawnPoints.Length);
                 Transform spawnPoint = spawnPoints[spawnIndex];
 

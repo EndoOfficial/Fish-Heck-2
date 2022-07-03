@@ -1,12 +1,11 @@
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public Text score;
+    public Text life;
     public Image loseScreen;
     public int _playerScore;
     public EventTrigger.TriggerEvent CoinScore;
@@ -17,6 +16,7 @@ public class GameManager : MonoBehaviour
     public EventTrigger.TriggerEvent TiltTrigger;
     public Transform Platform;
     public int isScore;
+    public int _life;
 
     public GameObject pauseMenuUI;
 
@@ -24,11 +24,13 @@ public class GameManager : MonoBehaviour
     {
         GameEvents.CoinScore += CoinScoreUI;
         GameEvents.FishScore += FishScore;
+        GameEvents.LoseLife += LoseLife;
     }
     private void OnDisable()
     {
         GameEvents.CoinScore -= CoinScoreUI;
         GameEvents.FishScore -= FishScore;
+        GameEvents.LoseLife -= LoseLife;
     }
 
     public void FishScore(int setScore)
@@ -46,7 +48,18 @@ public class GameManager : MonoBehaviour
             GameEvents.Difficulty?.Invoke();
         }
     }
+    private void LoseLife()
+        {
+            // simple life counter
+            _life = _life - 1;
+            life.text = ""+_life;
 
+            //gameover when life runs out
+            if (_life <= 0)
+            {
+                GameEvents.GameOver?.Invoke();
+            }
+        }
 
     public void CoinScoreUI()
     {
@@ -55,7 +68,6 @@ public class GameManager : MonoBehaviour
         this.score.text = _playerScore.ToString();
         Debug.Log("score" + _playerScore.ToString());
     }
-
 
     private void Update()
     {
@@ -66,7 +78,10 @@ public class GameManager : MonoBehaviour
             thresholdCount = 0;
             Debug.Log("tilt");
         }
-
+    }
+    private void Start()
+    {
+        life.text = "" + _life;
     }
     //Different UI functions, all are accessed through OnClicks
     public void LoadSharkLevel()

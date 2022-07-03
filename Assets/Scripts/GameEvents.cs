@@ -17,5 +17,5 @@ public static class GameEvents
     public static Action Difficulty; //increase fish dificulty
     public static Action Pause; // on pause
     public static Action Resume; // on resume
-    public static Action loseLife; // miss fish / hit poison
+    public static Action LoseLife; // miss fish / hit poison
 }

@@ -82,12 +82,15 @@ public class Fish : MonoBehaviour
 
     public void Puffercut()
     {
+        // loop for a random number between -5 and 5
+        // repeat if number is between -2 and 2
         float randomNumber;
         do
         {
             randomNumber = Random.Range(-5, 5);
         } while (randomNumber < 2 && randomNumber > -2);
 
+        // instantiate halves in opposite directions
         Fish newPufferHalf = Instantiate(pufferHalf, transform.position, transform.rotation);
         Fish newPufferPoison = Instantiate(pufferPoison, transform.position, transform.rotation);
         newPufferHalf.GetComponent<Rigidbody>().AddForce(Vector3.left * randomNumber, ForceMode.Impulse);
