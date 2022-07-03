@@ -50,8 +50,11 @@ public class GameManager : MonoBehaviour
     }
     private void LoseLife()
         {
+            // simple life counter
             _life = _life - 1;
             life.text = ""+_life;
+
+            //gameover when life runs out
             if (_life <= 0)
             {
                 GameEvents.GameOver?.Invoke();

@@ -17,6 +17,8 @@ public class Plate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        //if sashimi touches
+        //add score and destroy
         if (other.CompareTag("FishLast"))
         {
             setScore = 1;

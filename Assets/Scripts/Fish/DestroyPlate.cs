@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyPlate : MonoBehaviour
 {
 
-    //destroy plate on enter
+    //destroy plate on trigger enter
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Plate")

@@ -24,6 +24,7 @@ public class Knife : MonoBehaviour
         GameEvents.OnSwipeEnd -= OnSwipeEnd;
     }
 
+    //Start and stop trail on swipe start and end
     private void OnSwipeStart(Vector2 SP, int TC)
     {
         trail.SetActive(true);
