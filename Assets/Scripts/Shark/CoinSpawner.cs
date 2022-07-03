@@ -8,13 +8,13 @@ public class CoinSpawner : MonoBehaviour
 {
     public GameObject Player;                   // spawn at player position if shark-free space not found
 
-    public GameObject Platform;
-    public GameObject Iceberg;
+    public GameObject Platform;                 //the area that the raycast is spawning to 
+    public GameObject Iceberg;                  //the physical object of the platform that the sushi/coin spawns on
     public Coin Coin;                           // prefab
-    private Coin currentCoin;
+    private Coin currentCoin;                   // the current existing sushi/coin
 
     // raycasting
-    private float coinRadius;
+    private float coinRadius;                   // The size of the space that the raycast needs to find a place for
     private float raycastSize = 1.5f;           // to allow space between
     private float rayCastHeight = 20f;
     public LayerMask hitLayerMask;              // for raycast hits of sharks (and player?)
@@ -23,6 +23,7 @@ public class CoinSpawner : MonoBehaviour
     private float widthy = 0;
     private float widthz = 0;
     
+    //setting the location that the raycast is searching through
     private Vector3 RandomSpawnPosition => new Vector3(UnityEngine.Random.Range(Platform.transform.position.x - (widthx/2f),
                                                                                     Platform.transform.position.x + (widthx / 2f)),
                                                             (Platform.transform.position.y + 1),
@@ -46,6 +47,7 @@ public class CoinSpawner : MonoBehaviour
         widthy = Platform.transform.localScale.y;
         widthz = Platform.transform.localScale.z;
 
+        // sets the radius of the sushi
         coinRadius = Coin.GetComponent<BoxCollider>().size.x;           // STEVE: assumes 'Coin' (sushi) has a BoxColllider!
         //coinRadius = Coin.GetComponent<SphereCollider>().radius;       // STEVE: if 'Coin' (sushi) has a SphereColllider
     }
@@ -55,10 +57,10 @@ public class CoinSpawner : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 randomPosition;
-        int counter = 1000; //limit duplication
+        int counter = 1000; //checks for a spot to spawn 1000 times before falling back on the contingency 
 
         do
-        {
+        {   // finds a new place to spawn
             randomPosition = RandomSpawnPosition;
 
             Vector3 rayCastOrigin = new Vector3(randomPosition.x, randomPosition.y + rayCastHeight, randomPosition.z);
@@ -69,7 +71,7 @@ public class CoinSpawner : MonoBehaviour
         while (counter > 0 && hit.transform != null);
 
         if (counter <= 0)
-        {
+        {   // if the rayast cant find a spot within 1000 attempts, it will spawn on the player to prevent it spawning in an unreachable place
             Debug.Log($"VacantRandomPosition: counter expired!!");
             return Player.transform.position;
         }
@@ -84,7 +86,7 @@ public class CoinSpawner : MonoBehaviour
         currentCoin.transform.localScale = new Vector3(0.13f , 0.13f, 0.13f);
     }
    
-    private void OnDrawGizmos()
+    private void OnDrawGizmos() // to see the spawn area
     {
         Gizmos.color = Color.white;
         Gizmos.DrawWireCube(Platform.transform.position, new Vector3(widthx, widthy, widthz));
