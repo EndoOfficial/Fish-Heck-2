@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public Text score;
     public Text life;
+    public Text fishCoinUI;
+
     public Image loseScreen;
     public int _playerScore;
     public EventTrigger.TriggerEvent CoinScore;
@@ -18,6 +20,8 @@ public class GameManager : MonoBehaviour
     public int isScore;
     public int _life;
 
+    public GameData gameData;
+
     public GameObject pauseMenuUI;
 
     private void OnEnable()
@@ -25,12 +29,16 @@ public class GameManager : MonoBehaviour
         GameEvents.CoinScore += CoinScoreUI;
         GameEvents.FishScore += FishScore;
         GameEvents.LoseLife += LoseLife;
+        GameEvents.PlayerDeath += OnDeathReset;
+        GameEvents.FishCoinMinted += FishCoinToUI;
     }
     private void OnDisable()
     {
         GameEvents.CoinScore -= CoinScoreUI;
         GameEvents.FishScore -= FishScore;
         GameEvents.LoseLife -= LoseLife;
+        GameEvents.PlayerDeath -= OnDeathReset;
+        GameEvents.FishCoinMinted -= FishCoinToUI;
     }
 
     public void FishScore(int setScore)
@@ -68,6 +76,10 @@ public class GameManager : MonoBehaviour
         this.score.text = _playerScore.ToString();
         Debug.Log("score" + _playerScore.ToString());
     }
+    void FishCoinToUI(int fishCoin) //find a way to put this function into start
+    {
+        this.fishCoinUI.text = fishCoin.ToString();
+    }
 
     private void Update()
     {
@@ -78,11 +90,20 @@ public class GameManager : MonoBehaviour
             thresholdCount = 0;
             Debug.Log("tilt");
         }
+        
     }
     private void Start()
     {
         life.text = "" + _life;
     }
+
+    void OnDeathReset()
+    {
+        GameEvents.ScoreToMint?.Invoke(_playerScore);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+
     //Different UI functions, all are accessed through OnClicks
     public void LoadSharkLevel()
     {

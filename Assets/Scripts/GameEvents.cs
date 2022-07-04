@@ -18,4 +18,7 @@ public static class GameEvents
     public static Action Pause; // on pause
     public static Action Resume; // on resume
     public static Action LoseLife; // miss fish / hit poison
+    public static Action PlayerDeath;// shark bait player dies, part of two part event that converts score to fishcoin
+    public static Action<int> ScoreToMint;//goes to the GameData script to mint the score to fishcoin
+    public static Action<int> FishCoinMinted; //minted nft
 }
