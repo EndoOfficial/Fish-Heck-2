@@ -13,6 +13,7 @@ public class FishSpawner : MonoBehaviour
     private bool gameOver = false;
     
     public float pufferChance;
+    public float tunaChance;
 
     private void Start()
     {
@@ -66,7 +67,7 @@ public class FishSpawner : MonoBehaviour
             yield return new WaitForSecondsRealtime(delay);
 
             //if the random number is higher than the pufferchance
-            if (Random.Range(0, 99) >= pufferChance) 
+            if (Random.Range(0, 99) >= pufferChance && Random.Range(0, 99) >=  tunaChance) 
             {
 
                 //spawn fish

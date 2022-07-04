@@ -55,27 +55,27 @@ public class Knife : MonoBehaviour
             var hitfish = hitinfo.transform.gameObject.GetComponent<Fish>();
             if(hitfish != null)
             {
-                if (hitinfo.transform.gameObject.CompareTag("BigFish"))
+                if (hitinfo.transform.gameObject.CompareTag("BigFish") && hitfish.canCut)
                 {
                     //when fish hit, cut fish
                     hitfish.FishCut();
-                    Destroy(hitinfo.transform.gameObject);
+                    Destroy(hitfish.gameObject);
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("FishHalf") && hitfish.canCut)
                 {
                     //when fish hit, cut fish
                     hitfish.HalfFishCut();
-                    Destroy(hitinfo.transform.gameObject);
+                    Destroy(hitfish.gameObject);
                 }
-                else if (hitinfo.transform.gameObject.CompareTag("Pufferfish"))
+                else if (hitinfo.transform.gameObject.CompareTag("Pufferfish") && hitfish.canCut)
                 {
                     hitfish.Puffercut();
-                    Destroy(hitinfo.transform.gameObject);
+                    Destroy(hitfish.gameObject);
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("PufferPoison") && hitfish.canCut)
                 {
                     GameEvents.LoseLife?.Invoke();
-                    Destroy(hitinfo.transform.gameObject);
+                    Destroy(hitfish.gameObject);
                 }
             }
         }

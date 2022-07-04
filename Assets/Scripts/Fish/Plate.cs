@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Plate : MonoBehaviour
 {
-    private int setScore;
-
     //move when existing
     Rigidbody rb;
     // Start is called before the first frame update
@@ -17,13 +15,22 @@ public class Plate : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //if sashimi touches
-        //add score and destroy
-        if (other.CompareTag("FishLast"))
+        var thisfish = other.gameObject.transform.GetComponent<Fish>();
+        if (other.tag == "BigFish" || other.tag == "FishHalf" || other.tag == "FishLast" || other.tag == "Pufferfish")
         {
-            setScore = 1;
-            GameEvents.FishScore?.Invoke(setScore);
-            Destroy(other.gameObject);
+            //if fish is falling
+            if (other.GetComponent<Rigidbody>().velocity.y < 0)
+            {
+            //if sashimi touches
+            //add score and destroy
+            
+                if (thisfish != null)
+                {
+                    thisfish.canCut = false;
+                    other.attachedRigidbody.useGravity = false;
+                    other.attachedRigidbody.velocity = Vector3.left * 1f;
+                }
+            }
         }
     }
 }

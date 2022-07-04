@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public void FishScore(int setScore)
     {
         _playerScore += setScore;
-        this.score.text = _playerScore.ToString();
+        score.text = "Score: "+_playerScore;
         isScore = setScore;
 
         if (_playerScore >= 200 && _playerScore <= 202)
@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
         {
             // simple life counter
             _life = _life - 1;
-            life.text = ""+_life;
+            life.text = "Lives: "+_life;
 
             //gameover when life runs out
             if (_life <= 0)
@@ -81,7 +81,8 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        life.text = "" + _life;
+        score.text = "Score: " + _playerScore;
+        life.text = "Lives: " + _life;
     }
     //Different UI functions, all are accessed through OnClicks
     public void LoadSharkLevel()
@@ -103,11 +104,13 @@ public class GameManager : MonoBehaviour
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
+        GameEvents.Pause?.Invoke();
     }
     public void ResumeGame()
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
+        GameEvents.Resume?.Invoke();
     }
     public void CloseGame()
     {

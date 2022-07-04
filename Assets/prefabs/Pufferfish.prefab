@@ -142,4 +142,4 @@ MonoBehaviour:
   pufferPoison: {fileID: 3188159147378144364, guid: d4f7c6a3a27d08d4aa5ad3658317a002, type: 3}
   canCut: 1
   graceTime: 1
-  startForce: 13
+  startForce: 12
