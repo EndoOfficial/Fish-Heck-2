@@ -31,7 +31,8 @@ public class Shark : MonoBehaviour
 
         if (other.gameObject.tag == "Player")
         { //Shark eating the player, will likely be changed to facilitate a lose screen 
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            GameEvents.PlayerDeath?.Invoke();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         if (other.gameObject.tag == "Coin")
         { //The sharks hit the coin and they spawn somewhere else, and plays a sound
