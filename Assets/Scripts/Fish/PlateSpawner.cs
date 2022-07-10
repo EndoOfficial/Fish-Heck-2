@@ -19,7 +19,7 @@ public class PlateSpawner : MonoBehaviour
         {
             // spawn plates every second
             Instantiate(plate, transform.position, transform.rotation);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSecondsRealtime(1f);
         }
     }
 }
