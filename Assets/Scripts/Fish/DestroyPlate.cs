@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class DestroyPlate : MonoBehaviour
 {
-
     private int setScore;
+    private Fish fish;
     //destroy plate on trigger enter
     private void OnTriggerEnter(Collider other)
     {
         var fish = other.GetComponent<Fish>();
         if (other.tag == "FishLast")
         {
-            setScore = 1;
-            GameEvents.FishScore?.Invoke(setScore);
+            if (fish.poisoned)
+            {
+                setScore = -1;
+                GameEvents.FishScore?.Invoke(setScore);
+            }
+            else
+            {
+                setScore = 1;
+                GameEvents.FishScore?.Invoke(setScore);
+            }
         }
         else if (other.tag == "BigFish")
         {
@@ -26,7 +34,8 @@ public class DestroyPlate : MonoBehaviour
         }
         else if (other.tag == "PufferFish")
         {
-            GameEvents.LoseLife?.Invoke();
+            setScore = -4;
+            GameEvents.FishScore?.Invoke(setScore);
         }
         Destroy(other.gameObject, 1f);
     }

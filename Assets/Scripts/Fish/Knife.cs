@@ -24,6 +24,10 @@ public class Knife : MonoBehaviour
         GameEvents.OnSwipeEnd -= OnSwipeEnd;
     }
 
+    private void Start()
+    {
+    }
+
     //Start and stop trail on swipe start and end
     private void OnSwipeStart(Vector2 SP, int TC)
     {
@@ -76,6 +80,7 @@ public class Knife : MonoBehaviour
                 {
                     GameEvents.LoseLife?.Invoke();
                     Destroy(hitfish.gameObject);
+                    GameEvents.Poison?.Invoke();
                 }
             }
         }

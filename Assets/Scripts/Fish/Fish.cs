@@ -19,18 +19,28 @@ public class Fish : MonoBehaviour
     Rigidbody rb;
     public float startForce = 0f;
 
+    public bool poisoned = false;
+    private Renderer rend;
+    private Color fishcolor = Color.green;
+
+    public bool onPlate = false;
+
     private void OnEnable()
     {
         GameEvents.GameOver += GameOver;
+        GameEvents.Poison += Poison;
     }
 
     private void OnDisable()
     {
         GameEvents.GameOver -= GameOver;
+        GameEvents.Poison -= Poison;
     }
+
 
     private void Start()
     {
+        rend = GetComponent<Renderer>();
         if (gameObject.CompareTag("BigFish"))
         {
             canCut = true;
@@ -103,7 +113,15 @@ public class Fish : MonoBehaviour
 
         newPufferPoison.GetComponent<Rigidbody>().AddForce(Vector3.right * randomNumber, ForceMode.Impulse);
         newPufferPoison.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(4, 6), ForceMode.Impulse);
-        
+    }
+
+    private void Poison()
+    {
+        poisoned = true;
+        if (onPlate)
+        {
+            rend.material.color = fishcolor;
+        }
     }
 
     private void GameOver()

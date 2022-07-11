@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &183786972
 Transform:
   m_ObjectHideFlags: 0
@@ -3279,6 +3279,7 @@ GameObject:
   - component: {fileID: 2061100787}
   - component: {fileID: 2061100789}
   - component: {fileID: 2061100788}
+  - component: {fileID: 2061100790}
   m_Layer: 0
   m_Name: trail
   m_TagString: Untagged
@@ -8081,6 +8082,18 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &2061100790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2061100786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60699ae43da4b61449f5ee4a128433e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2067444405
 GameObject:
   m_ObjectHideFlags: 0

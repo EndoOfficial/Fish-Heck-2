@@ -26,6 +26,7 @@ public class Plate : MonoBehaviour
             
                 if (thisfish != null)
                 {
+                    thisfish.onPlate = true;
                     thisfish.canCut = false;
                     other.attachedRigidbody.useGravity = false;
                     other.attachedRigidbody.velocity = Vector3.left * 1f;
