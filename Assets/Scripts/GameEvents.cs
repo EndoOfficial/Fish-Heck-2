@@ -23,8 +23,9 @@ public static class GameEvents
     public delegate void FishCoinMintedDelegate(int FishCoin);
     public static FishCoinMintedDelegate FishCoinMinted; //minted nft
 
-    public static Action CoinScore; //Player touches coin
-    public static Action CoinEat; //When shark eats the coin
+    public delegate void SharkEatDelegate(int setScore);
+    public static SharkEatDelegate SharkEat; //When shark eats the coin
+
     public static Action platformTiltTrigger; //score has reached threshold to tilt the platform
     public static Action TiltTrigger; //platform tilting
     public static Action GameOver; //Game Over

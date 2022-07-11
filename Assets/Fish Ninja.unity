@@ -2642,7 +2642,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Platform: {fileID: 0}
-  isScore: 0
   _life: 3
   gameData: {fileID: 11400000, guid: 6bd449c65708e5943bc49a93df43c84d, type: 2}
   pauseMenuUI: {fileID: 1946854485}

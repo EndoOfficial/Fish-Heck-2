@@ -32,13 +32,13 @@ public class CoinSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEvents.CoinScore += SpawnCoin;
-        GameEvents.CoinEat += SpawnCoin;
+        GameEvents.FishScore += SpawnCoin;
+        GameEvents.SharkEat += SpawnCoin;
     }
     private void OnDisable()
     {
-        GameEvents.CoinScore -= SpawnCoin;
-        GameEvents.CoinEat -= SpawnCoin;
+        GameEvents.FishScore -= SpawnCoin;
+        GameEvents.SharkEat -= SpawnCoin;
     }
 
     private void Start()
@@ -79,7 +79,7 @@ public class CoinSpawner : MonoBehaviour
         return randomPosition;
     }
 
-    private void SpawnCoin()
+    private void SpawnCoin(int setScore)
     {
         currentCoin = Instantiate(Coin, Iceberg.transform);
         currentCoin.transform.position = VacantRandomPosition();

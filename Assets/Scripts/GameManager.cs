@@ -17,70 +17,18 @@ public class GameManager : MonoBehaviour
     private int thresholdCount; // Gives a score threshold for the tilt to occur at 5 point intervals
     public EventTrigger.TriggerEvent TiltTrigger;
     public Transform Platform;
-    public int isScore;
     public int _life;
 
     public GameData gameData;
 
     public GameObject pauseMenuUI;
 
-    private void OnEnable()
+    private void Start()
     {
-        GameEvents.CoinScore += CoinScoreUI;
-        GameEvents.FishScore += FishScore;
-        GameEvents.LoseLife += LoseLife;
-        GameEvents.PlayerDeath += OnDeathReset;
-        GameEvents.FishCoinMinted += FishCoinToUI;
+        score.text = "Score: " + _playerScore;
+        life.text = "Lives: " + _life;
+        this.fishCoinUI.text = gameData.FishCoin.ToString();
     }
-    private void OnDisable()
-    {
-        GameEvents.CoinScore -= CoinScoreUI;
-        GameEvents.FishScore -= FishScore;
-        GameEvents.LoseLife -= LoseLife;
-        GameEvents.PlayerDeath -= OnDeathReset;
-        GameEvents.FishCoinMinted -= FishCoinToUI;
-    }
-
-    public void FishScore(int setScore)
-    {
-        _playerScore += setScore;
-        score.text = "Score: "+_playerScore;
-        isScore = setScore;
-
-        if (_playerScore >= 200 && _playerScore <= 202)
-        {
-            GameEvents.Difficulty?.Invoke();
-        }
-        else if (_playerScore >= 400 && _playerScore <= 402)
-        {
-            GameEvents.Difficulty?.Invoke();
-        }
-    }
-    private void LoseLife()
-        {
-            // simple life counter
-            _life = _life - 1;
-            life.text = "Lives: "+_life;
-
-            //gameover when life runs out
-            if (_life <= 0)
-            {
-                GameEvents.GameOver?.Invoke();
-            }
-        }
-
-    public void CoinScoreUI()
-    {
-        thresholdCount++;
-        _playerScore++;
-        this.score.text = _playerScore.ToString();
-        Debug.Log("score" + _playerScore.ToString());
-    }
-    void FishCoinToUI(int fishCoin) //find a way to put this function into start
-    {
-        this.fishCoinUI.text = fishCoin.ToString();
-    }
-
     private void Update()
     {
         //secret points that will move the platform every 5 points then reset
@@ -90,14 +38,55 @@ public class GameManager : MonoBehaviour
             thresholdCount = 0;
             Debug.Log("tilt");
         }
-        
+        this.fishCoinUI.text = gameData.FishCoin.ToString();
     }
-    private void Start()
+    private void OnEnable()
     {
-        score.text = "Score: " + _playerScore;
-        life.text = "Lives: " + _life;
+        GameEvents.FishScore += FishScore;
+        GameEvents.LoseLife += LoseLife;
+        GameEvents.PlayerDeath += OnDeathReset;
+        GameEvents.FishCoinMinted += FishCoinToUI;
+    }
+    private void OnDisable()
+    {
+        GameEvents.FishScore -= FishScore;
+        GameEvents.LoseLife -= LoseLife;
+        GameEvents.PlayerDeath -= OnDeathReset;
+        GameEvents.FishCoinMinted -= FishCoinToUI;
+    }
+    
+    public void FishScore(int setScore)
+    {
+        thresholdCount++;
+        _playerScore += setScore;
+        score.text = _playerScore.ToString();
+
+        //if (_playerScore >= 200 && _playerScore <= 202)
+        //{
+        //    GameEvents.Difficulty?.Invoke();
+        //}
+        //else if (_playerScore >= 400 && _playerScore <= 402)
+        //{
+        //    GameEvents.Difficulty?.Invoke();
+        //}
+    }
+    private void LoseLife()
+    {
+        // simple life counter
+        _life = _life - 1;
+        life.text = _life.ToString();
+
+        //gameover when life runs out
+        if (_life <= 0)
+        {
+            GameEvents.GameOver?.Invoke();
+        }
     }
 
+    void FishCoinToUI(int fishCoin) //find a way to put this function into start
+    {
+        fishCoinUI.text = fishCoin.ToString();
+    }
     void OnDeathReset()
     {
         GameEvents.ScoreToMint?.Invoke(_playerScore);

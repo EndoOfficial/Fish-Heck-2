@@ -7,6 +7,7 @@ public class Coin : MonoBehaviour
 {
     public float spinSpeed = 100f;
     public EventTrigger.TriggerEvent scoreTrigger;
+    private int setScore=1;
 
     void Update()
     {
@@ -18,7 +19,7 @@ public class Coin : MonoBehaviour
         // send event for scoring
         if (other.gameObject.tag == "Player")
         {
-            GameEvents.CoinScore?.Invoke();
+            GameEvents.FishScore?.Invoke(setScore);
             Debug.Log("Player coin get");
             Destroy(this.gameObject);
         }

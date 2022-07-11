@@ -10,6 +10,7 @@ public class Shark : MonoBehaviour
     public GameObject shark;
     public AudioClip munch;
     public AudioSource source;
+    private int setScore = 0;
     private void Awake()
     { //the rate at which the the shark grows
         scaleChange = new Vector3(0.05f, 0.05f, 0.05f);
@@ -20,11 +21,11 @@ public class Shark : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameEvents.CoinScore += sharkShrink;
+        GameEvents.FishScore += sharkShrink;
     }
     private void OnDisable()
     {
-        GameEvents.CoinScore -= sharkShrink;
+        GameEvents.FishScore -= sharkShrink;
     }
     private void OnTriggerEnter(Collider other)
     { //Sharks eating various things
@@ -32,12 +33,10 @@ public class Shark : MonoBehaviour
         if (other.gameObject.tag == "Player")
         { //Shark eating the player, will likely be changed to facilitate a lose screen 
             GameEvents.PlayerDeath?.Invoke();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
         if (other.gameObject.tag == "Coin")
         { //The sharks hit the coin and they spawn somewhere else, and plays a sound
-            GameEvents.CoinEat?.Invoke();
-            Debug.Log("shark coin eat");
+            GameEvents.SharkEat?.Invoke(setScore);
             Destroy(other.gameObject);
             source.PlayOneShot(munch);
         }
@@ -53,7 +52,7 @@ public class Shark : MonoBehaviour
             gameObject.SetActive(true);
         }
     }
-    private void sharkShrink()
+    private void sharkShrink(int setScore)
     { //shark shrinking after a coin has been aquired
         shark.transform.localScale -= scaleChange * 0.6f;
     }

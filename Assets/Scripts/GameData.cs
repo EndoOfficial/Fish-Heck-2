@@ -7,12 +7,10 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "GameData")]
 public class GameData : ScriptableObject
 {
-    private int FishCoin;
-    public Text FishCoinUI;
+    public int FishCoin;
 
     private void Awake()
     {
-        FishCoinUI = FishCoinUI.GetComponent<Text>();
     }
     private void OnEnable()
     {
