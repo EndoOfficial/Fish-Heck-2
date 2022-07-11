@@ -21,12 +21,11 @@ public class GameManager : MonoBehaviour
 
     public GameData gameData;
 
-    public GameObject pauseMenuUI;
 
     private void Start()
     {
-        score.text = "Score: " + _playerScore;
-        life.text = "Lives: " + _life;
+        score.text = _playerScore.ToString();
+        life.text = _life.ToString();
         this.fishCoinUI.text = gameData.FishCoin.ToString();
     }
     private void Update()
@@ -79,6 +78,7 @@ public class GameManager : MonoBehaviour
         //gameover when life runs out
         if (_life <= 0)
         {
+            GameEvents.ScoreToMint?.Invoke(_playerScore);
             GameEvents.GameOver?.Invoke();
         }
     }
@@ -94,42 +94,5 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //Different UI functions, all are accessed through OnClicks
-    public void LoadSharkLevel()
-    {
-        SceneManager.LoadScene("Shark Bait");
-        Time.timeScale = 1f;
-    }
-    public void LoadFishLevel()
-    {
-        SceneManager.LoadScene("Fish Ninja");
-        Time.timeScale = 1f;
-    }
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene("Main Menu");
-        Time.timeScale = 1f;
-    }
-    public void PauseGame()
-    {
-        pauseMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        GameEvents.Pause?.Invoke();
-    }
-    public void ResumeGame()
-    {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameEvents.Resume?.Invoke();
-    }
-    public void CloseGame()
-    {
-        Application.Quit();
-    }
-    public void RestartGame()
-    {
-        // restarts game w/ the reset button
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1f;
-    }
+
 }

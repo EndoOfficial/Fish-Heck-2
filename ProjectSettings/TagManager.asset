@@ -15,6 +15,7 @@ TagManager:
   - PufferPoison
   - Plate
   - Destroy
+  - Iceberg
   layers:
   - Default
   - TransparentFX
