@@ -102,8 +102,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 2.2204466e-16, z: 10.000002}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10, y: 1, z: 10.000002}
+  m_Center: {x: 0, y: 0, z: -0}
 --- !u!54 &3956878747406149784
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -132,14 +132,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 525c278a37867884894594287ded9bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainFish: {fileID: 203849758358918894, guid: 2fefe20dd591f3f4a95645c5cfd83ab5, type: 3}
-  fishHead: {fileID: 8618202144774288444, guid: 937fabc6e3f8b714cbb6e08c2a1ecf1c, type: 3}
-  fishTail: {fileID: 3188159147378144364}
-  fishLast1: {fileID: 1504990752863214150, guid: 20ee4d39e436917448bc1bac4921c773, type: 3}
-  fishLast2: {fileID: 1504990752863214150, guid: f90b44e323e6bb549af7b547d95565f4, type: 3}
-  puffer: {fileID: 203849758358918894, guid: 6efe93dcc72e1e246a6f50ce597f37a4, type: 3}
-  pufferHalf: {fileID: 8618202144774288444, guid: 8dc34a0554c4c854e92421f49cd0043e, type: 3}
-  pufferPoison: {fileID: 3188159147378144364, guid: d4f7c6a3a27d08d4aa5ad3658317a002, type: 3}
-  canCut: 0
+  fishIndex:
+  - {fileID: 203849758358918894, guid: 2fefe20dd591f3f4a95645c5cfd83ab5, type: 3}
+  - {fileID: 203849758358918894, guid: c2cb4ec44dc90374fa3e50ea92c227e5, type: 3}
+  - {fileID: 8618202144774288444, guid: 2f81dfb5c23d0e049bd05cef80b1ffda, type: 3}
+  - {fileID: 3188159147378144364, guid: 4314dd03ffbc5e4469f5a8af3ee6db3e, type: 3}
+  - {fileID: 8618202144774288444, guid: 937fabc6e3f8b714cbb6e08c2a1ecf1c, type: 3}
+  - {fileID: 3188159147378144364}
+  - {fileID: 1504990752863214150, guid: 20ee4d39e436917448bc1bac4921c773, type: 3}
+  - {fileID: 1504990752863214150, guid: f90b44e323e6bb549af7b547d95565f4, type: 3}
+  - {fileID: 203849758358918894, guid: 6efe93dcc72e1e246a6f50ce597f37a4, type: 3}
+  - {fileID: 8618202144774288444, guid: 8dc34a0554c4c854e92421f49cd0043e, type: 3}
+  - {fileID: 3188159147378144364, guid: d4f7c6a3a27d08d4aa5ad3658317a002, type: 3}
+  canCut: 1
   graceTime: 0.3
-  startForce: 15
+  startForce: 12
+  poisoned: 0
+  onPlate: 0

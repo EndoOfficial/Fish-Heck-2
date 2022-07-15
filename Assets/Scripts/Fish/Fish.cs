@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    public Fish mainFish;
-    public Fish fishHead;
-    public Fish fishTail;
-    public Fish fishLast1;
-    public Fish fishLast2;
-    public Fish puffer;
-    public Fish pufferHalf;
-    public Fish pufferPoison;
+    public Fish[] fishIndex;
 
     public bool canCut = false;
     public float graceTime = 0.5f;
@@ -47,6 +40,12 @@ public class Fish : MonoBehaviour
             rb = GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * -Random.Range(startForce -.5f, startForce +.5f), ForceMode.Impulse);
         }
+        else if (gameObject.CompareTag("BigFish2"))
+        {
+            canCut = true;
+            rb = GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * -Random.Range(startForce - .5f, startForce + .5f), ForceMode.Impulse);
+        }
         else if (gameObject.CompareTag("Pufferfish"))
         {
             canCut = true;
@@ -67,8 +66,8 @@ public class Fish : MonoBehaviour
     public void FishCut()
     {
         
-        Fish newhead = Instantiate(fishHead, transform.position, transform.rotation);
-        Fish newtail = Instantiate(fishTail, transform.position, transform.rotation);
+        Fish newhead = Instantiate(fishIndex[4], transform.position, transform.rotation);
+        Fish newtail = Instantiate(fishIndex[5], transform.position, transform.rotation);
 
         newhead.GetComponent<Rigidbody>().AddForce(Vector3.right * -Random.Range(1, 5), ForceMode.Impulse);
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
@@ -78,18 +77,30 @@ public class Fish : MonoBehaviour
         
     }
 
+    public void FishCut2()
+    {
+        Fish newhead = Instantiate(fishIndex[2], transform.position, transform.rotation);
+        Fish newtail = Instantiate(fishIndex[3], transform.position, transform.rotation);
+
+        newhead.GetComponent<Rigidbody>().AddForce(Vector3.right * -Random.Range(1, 5), ForceMode.Impulse);
+        newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
+        newhead.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
+        newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
+        Destroy(this.gameObject);
+    }
+
     //create sashimi
     public void HalfFishCut()
     { 
-        if (fishLast1 != null)
+        if (fishIndex[0] != null)
         {
-            Fish newLast1 = Instantiate(fishLast1, transform.position, transform.rotation);
+            Fish newLast1 = Instantiate(fishIndex[6], transform.position, transform.rotation);
             newLast1.GetComponent<Rigidbody>().AddForce(Vector3.right * Random.Range(1, 5), ForceMode.Impulse);
             newLast1.GetComponent<Rigidbody>().AddForce(Vector3.up * -Random.Range(3, 6), ForceMode.Impulse);
         }
-        if (fishLast2 != null)
+        if (fishIndex[0] != null)
         {
-            Fish newLast2 = Instantiate(fishLast2, transform.position, transform.rotation);
+            Fish newLast2 = Instantiate(fishIndex[7], transform.position, transform.rotation);
             newLast2.GetComponent<Rigidbody>().AddForce(Vector3.left * Random.Range(1, 5), ForceMode.Impulse);
             newLast2.GetComponent<Rigidbody>().AddForce(Vector3.up * -Random.Range(3, 6), ForceMode.Impulse);
         }
@@ -106,8 +117,8 @@ public class Fish : MonoBehaviour
         } while (randomNumber < 2 && randomNumber > -2);
 
         // instantiate halves in opposite directions
-        Fish newPufferHalf = Instantiate(pufferHalf, transform.position, transform.rotation);
-        Fish newPufferPoison = Instantiate(pufferPoison, transform.position, transform.rotation);
+        Fish newPufferHalf = Instantiate(fishIndex[9], transform.position, transform.rotation);
+        Fish newPufferPoison = Instantiate(fishIndex[10], transform.position, transform.rotation);
         newPufferHalf.GetComponent<Rigidbody>().AddForce(Vector3.left * randomNumber, ForceMode.Impulse);
         newPufferHalf.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(4, 6), ForceMode.Impulse);
 

@@ -17,25 +17,34 @@ public class DestroyPlate : MonoBehaviour
                 setScore = -1;
                 GameEvents.FishScore?.Invoke(setScore);
             }
+
             else
             {
                 setScore = 1;
                 GameEvents.FishScore?.Invoke(setScore);
             }
         }
+
         else if (other.tag == "BigFish")
         {
             GameEvents.LoseLife?.Invoke();
+        } 
+        else if (other.tag == "BigFish2")
+        {
+            GameEvents.LoseLife?.Invoke();
         }
+
         else if (other.tag == "FishHalf")
         {
             setScore = -3;
             GameEvents.FishScore?.Invoke(setScore);
         }
+
         else if (other.tag == "PufferFish")
         {
             setScore = -4;
             GameEvents.FishScore?.Invoke(setScore);
+            GameEvents.LoseLife?.Invoke();
         }
         Destroy(other.gameObject, 1f);
     }

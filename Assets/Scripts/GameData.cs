@@ -9,9 +9,6 @@ public class GameData : ScriptableObject
 {
     public int FishCoin;
 
-    private void Awake()
-    {
-    }
     private void OnEnable()
     {
         GameEvents.ScoreToMint += MintCoin;

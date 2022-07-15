@@ -16,6 +16,7 @@ TagManager:
   - Plate
   - Destroy
   - Iceberg
+  - BigFish2
   layers:
   - Default
   - TransparentFX

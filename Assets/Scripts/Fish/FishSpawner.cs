@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class FishSpawner : MonoBehaviour
 {
-    public GameObject fishPrefab;
-    public GameObject pufferPrefab;
     public Transform[] spawnPoints;
+    private int fishindex;
+    public GameObject[] fishPrefab;
 
     public float minDelay = .1f;
     public float maxDelay = 1f;
     private bool gameOver = false;
-    
-    public float pufferChance;
-    public float tunaChance;
 
     private void Start()
     {
@@ -27,6 +24,7 @@ public class FishSpawner : MonoBehaviour
         GameEvents.Pause += Pause;
         GameEvents.Resume += Resume;
     }
+
     private void OnDisable()
     {
         GameEvents.GameOver -= GameOver;
@@ -51,7 +49,6 @@ public class FishSpawner : MonoBehaviour
     {
         StopAllCoroutines();
     }
-    
 
     private void Resume()
     {
@@ -66,24 +63,13 @@ public class FishSpawner : MonoBehaviour
             float delay = Random.Range(minDelay, maxDelay);
             yield return new WaitForSecondsRealtime(delay);
 
-            //if the random number is higher than the pufferchance
-            if (Random.Range(0, 99) >= pufferChance && Random.Range(0, 99) >=  tunaChance) 
-            {
+            //spawn fish
+            int spawnIndex = Random.Range(0, spawnPoints.Length);
+            Transform spawnPoint = spawnPoints[spawnIndex];
 
-                //spawn fish
-                int spawnIndex = Random.Range(0, spawnPoints.Length);
-                Transform spawnPoint = spawnPoints[spawnIndex];
-
-                Instantiate(fishPrefab, spawnPoint.position, spawnPoint.rotation);
-            }
-            else
-            {
-                //spawn pufferfish
-                int spawnIndex = Random.Range(0, spawnPoints.Length);
-                Transform spawnPoint = spawnPoints[spawnIndex];
-
-                Instantiate(pufferPrefab, spawnPoint.position, spawnPoint.rotation);
-            }
+            //choose which fish to spawn
+            fishindex = Random.Range(0,fishPrefab.Length);
+            Instantiate(fishPrefab[fishindex], spawnPoint.position, spawnPoint.rotation);            
         }
     }
 }

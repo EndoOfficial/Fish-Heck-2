@@ -59,15 +59,11 @@ public class GameManager : MonoBehaviour
         thresholdCount++;
         _playerScore += setScore;
         score.text = _playerScore.ToString();
-
-        //if (_playerScore >= 200 && _playerScore <= 202)
-        //{
-        //    GameEvents.Difficulty?.Invoke();
-        //}
-        //else if (_playerScore >= 400 && _playerScore <= 402)
-        //{
-        //    GameEvents.Difficulty?.Invoke();
-        //}
+        if(_playerScore < 0)
+        {
+            _playerScore = 0;
+            score.text = _playerScore.ToString();
+        }
     }
     private void LoseLife()
     {

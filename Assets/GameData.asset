@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 867fa65c5bb0b564099cfac84486d15a, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
+  FishCoin: 0
