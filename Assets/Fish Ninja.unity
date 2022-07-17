@@ -423,8 +423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3048396f03d363f4aa5b1c8a704315aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fishPrefab: {fileID: 8998616951032430037, guid: 2fefe20dd591f3f4a95645c5cfd83ab5, type: 3}
-  pufferPrefab: {fileID: 8998616951032430037, guid: 6efe93dcc72e1e246a6f50ce597f37a4, type: 3}
   spawnPoints:
   - {fileID: 1790679198}
   - {fileID: 997874243}
@@ -432,10 +430,13 @@ MonoBehaviour:
   - {fileID: 1180932271}
   - {fileID: 820875488}
   - {fileID: 1178529030}
+  fishPrefab:
+  - {fileID: 8998616951032430037, guid: 2fefe20dd591f3f4a95645c5cfd83ab5, type: 3}
+  - {fileID: 8998616951032430037, guid: c2cb4ec44dc90374fa3e50ea92c227e5, type: 3}
+  - {fileID: 8998616951032430037, guid: 6efe93dcc72e1e246a6f50ce597f37a4, type: 3}
+  - {fileID: 8998616951032430037, guid: 42fd65d07e331434990580561cb3bbbc, type: 3}
   minDelay: 0.3
   maxDelay: 2
-  pufferChance: 20
-  tunaChance: 0
 --- !u!4 &175861111
 Transform:
   m_ObjectHideFlags: 0
@@ -2700,6 +2701,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f3129277d03bd24594958ae821b7fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music: {fileID: 0}
   pauseMenuUI: {fileID: 1946854485}
   GameOverImage: {fileID: 1267476958}
 --- !u!1001 &1698332809
@@ -2877,7 +2879,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   CSpawnPointsLibrary: []
-  coinPrefab: {fileID: 0}
+  coinPrefab: {fileID: 4087739759223365617, guid: 06e3b0c9b710de9468872a346243c320, type: 3}
   TiltTrigger:
     m_PersistentCalls:
       m_Calls: []
