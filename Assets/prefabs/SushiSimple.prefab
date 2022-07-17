@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3018725050672074642}
   - component: {fileID: 7150098142279392161}
   - component: {fileID: 2131990982963791090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SushiSimple
   m_TagString: Coin
   m_Icon: {fileID: 0}
@@ -233,7 +233,6 @@ MonoBehaviour:
           m_StringArgument: score
           m_BoolArgument: 0
         m_CallState: 2
-  iceberg: {fileID: 4192399959089234799, guid: 537b6332b04a21d4195bcc61e850020b, type: 3}
 --- !u!65 &3018725050672074642
 BoxCollider:
   m_ObjectHideFlags: 0

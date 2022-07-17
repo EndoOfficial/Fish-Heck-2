@@ -60,14 +60,6 @@ public class GameManager : MonoBehaviour
         _playerScore += setScore;
         score.text = _playerScore.ToString();
 
-        //if (_playerScore >= 200 && _playerScore <= 202)
-        //{
-        //    GameEvents.Difficulty?.Invoke();
-        //}
-        //else if (_playerScore >= 400 && _playerScore <= 402)
-        //{
-        //    GameEvents.Difficulty?.Invoke();
-        //}
     }
     private void LoseLife()
     {
@@ -83,11 +75,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void FishCoinToUI(int fishCoin) //find a way to put this function into start
+    void FishCoinToUI(int fishCoin) //prints fishcoin variable to the Ui
     {
         fishCoinUI.text = fishCoin.ToString();
     }
-    void OnDeathReset()
+    void OnDeathReset() //facilitates the conversion process
     {
         GameEvents.ScoreToMint?.Invoke(_playerScore);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

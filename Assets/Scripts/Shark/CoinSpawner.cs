@@ -17,7 +17,9 @@ public class CoinSpawner : MonoBehaviour
     private float coinRadius;                   // The size of the space that the raycast needs to find a place for
     private float raycastSize = 1.5f;           // to allow space between
     private float rayCastHeight = 20f;
+
     public LayerMask hitLayerMask;              // for raycast hits of sharks (and player?)
+    public LayerMask spawnLayerMask;            // STEVE: for final raycast hit on platform, to spawn sushi/coin
 
     private float widthx = 0;
     private float widthy = 0;
@@ -57,13 +59,14 @@ public class CoinSpawner : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 randomPosition;
+        Vector3 rayCastOrigin;
         int counter = 1000; //checks for a spot to spawn 1000 times before falling back on the contingency 
 
         do
         {   // finds a new place to spawn
             randomPosition = RandomSpawnPosition;
 
-            Vector3 rayCastOrigin = new Vector3(randomPosition.x, randomPosition.y + rayCastHeight, randomPosition.z);
+            rayCastOrigin = new Vector3(randomPosition.x, randomPosition.y + rayCastHeight, randomPosition.z);
 
             Physics.SphereCast(rayCastOrigin, coinRadius * raycastSize, Vector3.down, out hit, rayCastHeight * 2f, hitLayerMask);
             counter--;
@@ -76,7 +79,14 @@ public class CoinSpawner : MonoBehaviour
             return Player.transform.position;
         }
 
-        return randomPosition;
+        // STEVE
+        // vacant space found, use 'successful' rayCastOrigin to raycast onto iceberg
+        // which may have rotated during the raycast loop,
+        // so raycast again to get exact spawn point on the iceberg's box collider (not colliders of child objects)
+        RaycastHit spawnHit;
+        Physics.Raycast(rayCastOrigin, Vector3.down, out spawnHit, rayCastHeight * 2f, spawnLayerMask);
+        return spawnHit.point;
+        //remember to get the sushi to spawn 1 up on y axis when brain rot settles down
     }
 
     private void SpawnCoin(int setScore)
