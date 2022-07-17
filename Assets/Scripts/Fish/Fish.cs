@@ -79,7 +79,6 @@ public class Fish : MonoBehaviour
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
         newhead.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
-        Destroy(this.gameObject);
         
     }
 
@@ -92,7 +91,6 @@ public class Fish : MonoBehaviour
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
         newhead.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
-        Destroy(this.gameObject);
     }
     public void SquidCut()
     {
@@ -103,7 +101,6 @@ public class Fish : MonoBehaviour
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
         newhead.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
-        Destroy(this.gameObject);
     }
 
     //create sashimi
@@ -128,14 +125,27 @@ public class Fish : MonoBehaviour
         // loop for a random number between -5 and 5
         // repeat if number is between -2 and 2
         float randomNumber;
-        do
-        {
+        do {
             randomNumber = Random.Range(-5, 5);
-        } while (randomNumber < 2 && randomNumber > -2);
+        } while (randomNumber < 3 && randomNumber > -3);
 
         // instantiate halves in opposite directions
         Fish newPufferHalf = Instantiate(fishIndex[9], transform.position, transform.rotation);
         Fish newPufferPoison = Instantiate(fishIndex[10], transform.position, transform.rotation);
+        if (randomNumber >= 0)
+        {
+            newPufferHalf.transform.localScale = new Vector3
+                (newPufferHalf.transform.localScale.x * -1,
+                newPufferHalf.transform.localScale.y, 
+                newPufferHalf.transform.localScale.z);
+        }
+        else
+        {
+            newPufferPoison.transform.localScale = new Vector3
+                (newPufferPoison.transform.localScale.x * -1,
+                newPufferPoison.transform.localScale.y,
+                newPufferPoison.transform.localScale.z);
+        }
         newPufferHalf.GetComponent<Rigidbody>().AddForce(Vector3.left * randomNumber, ForceMode.Impulse);
         newPufferHalf.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(4, 6), ForceMode.Impulse);
 
