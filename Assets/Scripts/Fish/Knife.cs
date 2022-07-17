@@ -71,6 +71,12 @@ public class Knife : MonoBehaviour
                     hitfish.FishCut2();
                     Destroy(hitfish.gameObject);
                 }
+                else if (hitfish.transform.CompareTag("Squid") && hitfish.canCut)
+                {
+                    //when fish hit, cut fish
+                    hitfish.SquidCut();
+                    Destroy(hitfish.gameObject);
+                }
                 else if (hitinfo.transform.gameObject.CompareTag("FishHalf") && hitfish.canCut)
                 {
                     //when fish hit, cut fish

@@ -88,6 +88,17 @@ public class Fish : MonoBehaviour
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
         Destroy(this.gameObject);
     }
+    public void SquidCut()
+    {
+        Fish newhead = Instantiate(fishIndex[11], transform.position, transform.rotation);
+        Fish newtail = Instantiate(fishIndex[12], transform.position, transform.rotation);
+
+        newhead.GetComponent<Rigidbody>().AddForce(Vector3.right * -Random.Range(1, 5), ForceMode.Impulse);
+        newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
+        newhead.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
+        newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
+        Destroy(this.gameObject);
+    }
 
     //create sashimi
     public void HalfFishCut()

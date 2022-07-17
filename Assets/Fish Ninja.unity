@@ -434,6 +434,7 @@ MonoBehaviour:
   - {fileID: 8998616951032430037, guid: 2fefe20dd591f3f4a95645c5cfd83ab5, type: 3}
   - {fileID: 8998616951032430037, guid: c2cb4ec44dc90374fa3e50ea92c227e5, type: 3}
   - {fileID: 8998616951032430037, guid: 6efe93dcc72e1e246a6f50ce597f37a4, type: 3}
+  - {fileID: 8998616951032430037, guid: 42fd65d07e331434990580561cb3bbbc, type: 3}
   minDelay: 0.3
   maxDelay: 2
 --- !u!4 &175861111
