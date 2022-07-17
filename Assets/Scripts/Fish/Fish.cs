@@ -72,8 +72,8 @@ public class Fish : MonoBehaviour
     public void FishCut()
     {
         
-        Fish newhead = Instantiate(fishIndex[4], transform.position, transform.rotation);
-        Fish newtail = Instantiate(fishIndex[5], transform.position, transform.rotation);
+        Fish newhead = Instantiate(fishIndex[4], transform.position = new Vector3(transform.position.x + -0.5f, transform.position.y, transform.position.z), transform.rotation);
+        Fish newtail = Instantiate(fishIndex[5], transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z), transform.rotation);
 
         newhead.GetComponent<Rigidbody>().AddForce(Vector3.right * -Random.Range(1, 5), ForceMode.Impulse);
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
@@ -94,11 +94,11 @@ public class Fish : MonoBehaviour
     }
     public void SquidCut()
     {
-        Fish newhead = Instantiate(fishIndex[11], transform.position, transform.rotation);
-        Fish newtail = Instantiate(fishIndex[12], transform.position, transform.rotation);
+        Fish newhead = Instantiate(fishIndex[11], transform.position = new Vector3(transform.position.x + 0.5f, transform.position.y, transform.position.z), transform.rotation);
+        Fish newtail = Instantiate(fishIndex[12], transform.position = new Vector3(transform.position.x + -0.5f, transform.position.y, transform.position.z), transform.rotation);
 
-        newhead.GetComponent<Rigidbody>().AddForce(Vector3.right * -Random.Range(1, 5), ForceMode.Impulse);
-        newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
+        newhead.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(2, 5), ForceMode.Impulse);
+        newtail.GetComponent<Rigidbody>().AddForce(Vector3.right * -Random.Range(2, 5), ForceMode.Impulse);
         newhead.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
     }
@@ -132,7 +132,7 @@ public class Fish : MonoBehaviour
         // instantiate halves in opposite directions
         Fish newPufferHalf = Instantiate(fishIndex[9], transform.position, transform.rotation);
         Fish newPufferPoison = Instantiate(fishIndex[10], transform.position, transform.rotation);
-        if (randomNumber >= 0)
+        if (randomNumber >= 0) // if puffer half is moving right, invert x scale
         {
             newPufferHalf.transform.localScale = new Vector3
                 (newPufferHalf.transform.localScale.x * -1,
@@ -140,7 +140,7 @@ public class Fish : MonoBehaviour
                 newPufferHalf.transform.localScale.z);
         }
         else
-        {
+        { // if puffer poison is moving right, invert x scale
             newPufferPoison.transform.localScale = new Vector3
                 (newPufferPoison.transform.localScale.x * -1,
                 newPufferPoison.transform.localScale.y,
