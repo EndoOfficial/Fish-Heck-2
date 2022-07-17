@@ -46,6 +46,12 @@ public class Fish : MonoBehaviour
             rb = GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * -Random.Range(startForce - .5f, startForce + .5f), ForceMode.Impulse);
         }
+        else if (gameObject.CompareTag("Squid"))
+        {
+            canCut = true;
+            rb = GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * -Random.Range(startForce - .5f, startForce + .5f), ForceMode.Impulse);
+        }
         else if (gameObject.CompareTag("Pufferfish"))
         {
             canCut = true;
