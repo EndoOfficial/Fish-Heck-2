@@ -16,6 +16,8 @@ TagManager:
   - Plate
   - Destroy
   - Iceberg
+  - BigFish2
+  - Squid
   layers:
   - Default
   - TransparentFX

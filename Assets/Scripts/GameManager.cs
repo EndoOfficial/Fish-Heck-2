@@ -59,7 +59,15 @@ public class GameManager : MonoBehaviour
         thresholdCount++;
         _playerScore += setScore;
         score.text = _playerScore.ToString();
+<<<<<<< HEAD
 
+=======
+        if(_playerScore < 0)
+        {
+            _playerScore = 0;
+            score.text = _playerScore.ToString();
+        }
+>>>>>>> fc61646a0e0f94e3676d9d2162836da874267f82
     }
     private void LoseLife()
     {

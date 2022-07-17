@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UiManager : MonoBehaviour
 {
-
+    public GameObject music;
     public GameObject pauseMenuUI;
     public Image GameOverImage;
     private void OnEnable()
@@ -31,11 +31,13 @@ public class UiManager : MonoBehaviour
     {
         SceneManager.LoadScene("Fish Ninja");
         Time.timeScale = 1f;
+        Instantiate(music, transform.position, transform.rotation);
     }
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
         Time.timeScale = 1f;
+        Destroy(GameObject.Find("Music"));
     }
     public void PauseGame()
     {
