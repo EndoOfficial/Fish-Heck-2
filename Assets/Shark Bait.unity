@@ -2846,7 +2846,10 @@ MonoBehaviour:
   Coin: {fileID: 4087739759223365617, guid: 06e3b0c9b710de9468872a346243c320, type: 3}
   hitLayerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 776
+  spawnLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &780511532
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5480,7 +5483,7 @@ GameObject:
   - component: {fileID: 2128176167663790035}
   - component: {fileID: 2128176167663790036}
   - component: {fileID: 2128176167663790037}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Iceberg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7246,6 +7249,10 @@ PrefabInstance:
     - target: {fileID: 9176628804913258758, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
       propertyPath: m_Name
       value: PlayerSeal
+      objectReference: {fileID: 0}
+    - target: {fileID: 9176628804913258758, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 9176628804913258758, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
       propertyPath: m_TagString

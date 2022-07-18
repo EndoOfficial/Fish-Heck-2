@@ -31,7 +31,11 @@ public class UiManager : MonoBehaviour
     {
         SceneManager.LoadScene("Fish Ninja");
         Time.timeScale = 1f;
-        Instantiate(music, transform.position, transform.rotation);
+    }
+    public void LoadShimpLevel()
+    {
+        SceneManager.LoadScene("Shrimp Jump");
+        Time.timeScale = 1f;
     }
     public void LoadMainMenu()
     {

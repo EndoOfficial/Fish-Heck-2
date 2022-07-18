@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Fish Ninja.unity
     guid: 047fba3d95a6fdb4bbb2769e0681d800
+  - enabled: 1
+    path: Assets/Shrimp Jump.unity
+    guid: 402c71e40e72ae84fa32455705761dfa
   m_configObjects: {}

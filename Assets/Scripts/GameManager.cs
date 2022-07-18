@@ -25,7 +25,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         score.text = _playerScore.ToString();
+        if (life != null)
+        {
         life.text = _life.ToString();
+        }
         this.fishCoinUI.text = gameData.FishCoin.ToString();
     }
     private void Update()
@@ -33,7 +36,7 @@ public class GameManager : MonoBehaviour
         //secret points that will move the platform every 5 points then reset
         if (thresholdCount == 5)
         {
-            GameEvents.TiltTrigger.Invoke();
+            GameEvents.TiltTrigger?.Invoke();
             thresholdCount = 0;
             Debug.Log("tilt");
         }

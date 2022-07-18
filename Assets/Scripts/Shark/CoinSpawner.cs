@@ -15,18 +15,18 @@ public class CoinSpawner : MonoBehaviour
 
     // raycasting
     private float coinRadius;                   // The size of the space that the raycast needs to find a place for
-    private float raycastSize = 1.5f;           // to allow space between
+    private float raycastSize = 1.5f;             // to allow space between
     private float rayCastHeight = 20f;
 
-    public LayerMask hitLayerMask;              // for raycast hits of sharks (and player?)
+    public LayerMask hitLayerMask;              // for raycast hits of sharks (STEVE: and player and sushi?)
     public LayerMask spawnLayerMask;            // STEVE: for final raycast hit on platform, to spawn sushi/coin
 
     private float widthx = 0;
     private float widthy = 0;
     private float widthz = 0;
-    
+
     //setting the location that the raycast is searching through
-    private Vector3 RandomSpawnPosition => new Vector3(UnityEngine.Random.Range(Platform.transform.position.x - (widthx/2f),
+    private Vector3 RandomSpawnPosition => new Vector3(UnityEngine.Random.Range(Platform.transform.position.x - (widthx / 2f),
                                                                                     Platform.transform.position.x + (widthx / 2f)),
                                                             (Platform.transform.position.y + 1),
                                                             UnityEngine.Random.Range(Platform.transform.position.z - (widthz / 2f),
@@ -60,7 +60,8 @@ public class CoinSpawner : MonoBehaviour
         RaycastHit hit;
         Vector3 randomPosition;
         Vector3 rayCastOrigin;
-        int counter = 1000; //checks for a spot to spawn 1000 times before falling back on the contingency 
+
+        int counter = 10000; //checks for a spot to spawn 1000 times before falling back on the contingency 
 
         do
         {   // finds a new place to spawn
@@ -85,20 +86,25 @@ public class CoinSpawner : MonoBehaviour
         // so raycast again to get exact spawn point on the iceberg's box collider (not colliders of child objects)
         RaycastHit spawnHit;
         Physics.Raycast(rayCastOrigin, Vector3.down, out spawnHit, rayCastHeight * 2f, spawnLayerMask);
+        Debug.Log("position" + spawnHit.transform.position);
         return spawnHit.point;
-        //remember to get the sushi to spawn 1 up on y axis when brain rot settles down
+        //return randomPosition;
     }
 
     private void SpawnCoin(int setScore)
     {
-        currentCoin = Instantiate(Coin, Iceberg.transform);
-        currentCoin.transform.position = VacantRandomPosition();
-        currentCoin.transform.localScale = new Vector3(0.13f , 0.13f, 0.13f);
+        currentCoin = Instantiate(Coin, Iceberg.transform); //parents coin to platform
+        var coinPosition = VacantRandomPosition();
+        coinPosition = new Vector3(coinPosition.x, coinPosition.y + 1f, coinPosition.z); //moves the coin up a smidge
+
+        currentCoin.transform.position = coinPosition;
+
+        currentCoin.transform.localScale = new Vector3(0.13f, 0.13f, 0.13f);
     }
-   
+
     private void OnDrawGizmos() // to see the spawn area
     {
-        Gizmos.color = Color.white;
+        Gizmos.color = Color.magenta;
         Gizmos.DrawWireCube(Platform.transform.position, new Vector3(widthx, widthy, widthz));
     }
-}
+}   

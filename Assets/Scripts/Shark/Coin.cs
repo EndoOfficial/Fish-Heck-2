@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class Coin : MonoBehaviour
 {
     public float spinSpeed = 100f;
-    public EventTrigger.TriggerEvent scoreTrigger;
     private int setScore=1;
 
     void Update()

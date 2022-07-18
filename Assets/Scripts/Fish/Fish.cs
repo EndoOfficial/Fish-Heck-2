@@ -79,7 +79,7 @@ public class Fish : MonoBehaviour
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.left * -Random.Range(1, 5), ForceMode.Impulse);
         newhead.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
         newtail.GetComponent<Rigidbody>().AddForce(Vector3.up * Random.Range(3, 6), ForceMode.Impulse);
-        
+
     }
 
     public void FishCut2()
