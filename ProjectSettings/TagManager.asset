@@ -18,6 +18,8 @@ TagManager:
   - Iceberg
   - BigFish2
   - Squid
+  - Shrimp
+  - Jellyfish
   layers:
   - Default
   - TransparentFX

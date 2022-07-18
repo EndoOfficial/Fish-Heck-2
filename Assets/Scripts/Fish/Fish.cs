@@ -126,7 +126,7 @@ public class Fish : MonoBehaviour
         // repeat if number is between -2 and 2
         float randomNumber;
         do {
-            randomNumber = Random.Range(-5, 5);
+            randomNumber = Random.Range(-4, 5);
         } while (randomNumber < 3 && randomNumber > -3);
 
         // instantiate halves in opposite directions

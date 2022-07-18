@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     public EventTrigger.TriggerEvent CoinScore;
     public Transform[] CSpawnPointsLibrary;
     public Coin coinPrefab;
-    private Coin currentCoin;
     private int thresholdCount; // Gives a score threshold for the tilt to occur at 5 point intervals
     public EventTrigger.TriggerEvent TiltTrigger;
     public Transform Platform;
@@ -24,16 +23,25 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        score.text = _playerScore.ToString();
+        if(score != null)
+        {
+            score.text = _playerScore.ToString();
+        }
         if (life != null)
         {
-        life.text = _life.ToString();
+            life.text = _life.ToString();
         }
-        this.fishCoinUI.text = gameData.FishCoin.ToString();
+        if(fishCoinUI != null)
+        {
+        fishCoinUI.text = gameData.FishCoin.ToString();
+        }
     }
     private void Update()
     {
+        if(fishCoinUI != null)
+        { 
         this.fishCoinUI.text = gameData.FishCoin.ToString();
+        }
     }
     private void OnEnable()
     {
