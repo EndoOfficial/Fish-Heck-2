@@ -1645,7 +1645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9987f19f8f05ea4894cf76a19d65374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.5
+  moveSpeed: 2
 --- !u!1 &2122587230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,7 +1675,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d151eeb7b667bc94784660fb247f7fd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jellyCount: 3
+  jellyCount: 50
   count: 0
   minDist: 0.5
   maxDist: 2
