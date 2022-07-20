@@ -36,12 +36,14 @@ public class UiManager : MonoBehaviour
     {
         SceneManager.LoadScene("Shrimp Jump");
         Time.timeScale = 1f;
+        Screen.orientation = ScreenOrientation.Portrait;
     }
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("Main Menu");
         Time.timeScale = 1f;
         Destroy(GameObject.Find("Music"));
+        Screen.orientation = ScreenOrientation.LandscapeLeft;
     }
     public void PauseGame()
     {

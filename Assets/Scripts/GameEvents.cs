@@ -17,7 +17,7 @@ public static class GameEvents
     public delegate void FishScoreDelegate(int setScore);
     public static FishScoreDelegate FishScore; 
 
-    public delegate void ScoreToMintDelegate(int _playerScore);
+    public delegate void ScoreToMintDelegate(int playerScore);
     public static ScoreToMintDelegate ScoreToMint;//goes to the GameData script to mint the score to fishcoin
 
     public delegate void FishCoinMintedDelegate(int FishCoin);
@@ -35,4 +35,5 @@ public static class GameEvents
     public static Action LoseLife; // miss fish / hit poison
     public static Action Poison; // poison food on plates
     public static Action PlayerDeath;// shark bait player dies, part of two part event that converts score to fishcoin
+    public static Action JellyDestroy;// when jelly fish are eaten by the whale
 }

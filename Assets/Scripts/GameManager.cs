@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public Text fishCoinUI;
 
     public Image loseScreen;
-    public int _playerScore;
+    public int playerScore;
     public EventTrigger.TriggerEvent CoinScore;
     public Transform[] CSpawnPointsLibrary;
     public Coin coinPrefab;
@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     {
         if(score != null)
         {
-            score.text = _playerScore.ToString();
+            score.text = playerScore.ToString();
         }
         if (life != null)
         {
@@ -40,8 +40,9 @@ public class GameManager : MonoBehaviour
     {
         if(fishCoinUI != null)
         { 
-        this.fishCoinUI.text = gameData.FishCoin.ToString();
+        fishCoinUI.text = gameData.FishCoin.ToString();
         }
+        score.text = playerScore.ToString();
     }
     private void OnEnable()
     {
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
         GameEvents.LoseLife += LoseLife;
         GameEvents.PlayerDeath += OnDeathReset;
         GameEvents.FishCoinMinted += FishCoinToUI;
+        GameEvents.GameOver += GameOver;
     }
     private void OnDisable()
     {
@@ -56,6 +58,7 @@ public class GameManager : MonoBehaviour
         GameEvents.LoseLife -= LoseLife;
         GameEvents.PlayerDeath -= OnDeathReset;
         GameEvents.FishCoinMinted -= FishCoinToUI;
+        GameEvents.GameOver -= GameOver;
     }
     
     public void FishScore(int setScore)
@@ -69,12 +72,12 @@ public class GameManager : MonoBehaviour
             Debug.Log("tilt");
         }
         //player score that player sees
-        _playerScore += setScore;
-        score.text = _playerScore.ToString();
-        if(_playerScore < 0)
+        playerScore += setScore;
+        score.text = playerScore.ToString();
+        if(playerScore < 0)
         {
-            _playerScore = 0;
-            score.text = _playerScore.ToString();
+            playerScore = 0;
+            score.text = playerScore.ToString();
         }
     }
     private void LoseLife()
@@ -86,7 +89,7 @@ public class GameManager : MonoBehaviour
         //gameover when life runs out
         if (_life <= 0)
         {
-            GameEvents.ScoreToMint?.Invoke(_playerScore);
+            GameEvents.ScoreToMint?.Invoke(playerScore);
             GameEvents.GameOver?.Invoke();
         }
     }
@@ -97,10 +100,13 @@ public class GameManager : MonoBehaviour
     }
     void OnDeathReset() //facilitates the conversion process
     {
-        GameEvents.ScoreToMint?.Invoke(_playerScore);
+        GameEvents.ScoreToMint?.Invoke(playerScore);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
+    private void GameOver()
+    {
+        GameEvents.ScoreToMint(playerScore);
+    }
 
 }

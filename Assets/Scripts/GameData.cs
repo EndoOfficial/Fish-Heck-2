@@ -17,9 +17,9 @@ public class GameData : ScriptableObject
     {
         GameEvents.ScoreToMint -= MintCoin;
     }
-    void MintCoin(int _playerScore)
+    void MintCoin(int playerScore)
     {
-        FishCoin += _playerScore;
+       FishCoin += playerScore;
        GameEvents.FishCoinMinted?.Invoke(FishCoin);
     }
 }

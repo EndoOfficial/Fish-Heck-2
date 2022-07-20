@@ -20,6 +20,7 @@ TagManager:
   - Squid
   - Shrimp
   - Jellyfish
+  - Whale
   layers:
   - Default
   - TransparentFX
