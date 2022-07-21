@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
+    //list of fish prefabs
     public Fish[] fishIndex;
 
+    //grace period variables
     public bool canCut = false;
     public float graceTime = 0.5f;
 
     Rigidbody rb;
-    public float startForce = 0f;
+    public float startForce;
 
     public bool poisoned = false;
     private Renderer rend;
@@ -126,7 +128,7 @@ public class Fish : MonoBehaviour
         // repeat if number is between -2 and 2
         float randomNumber;
         do {
-            randomNumber = Random.Range(-4, 5);
+            randomNumber = Random.Range(-4, 4);
         } while (randomNumber < 3 && randomNumber > -3);
 
         // instantiate halves in opposite directions
@@ -155,9 +157,9 @@ public class Fish : MonoBehaviour
 
     private void Poison()
     {
-        poisoned = true;
         if (onPlate)
         {
+            poisoned = true;
             rend.material.color = fishcolor;
         }
     }

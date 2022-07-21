@@ -29,13 +29,12 @@ public class Knife : MonoBehaviour
     }
 
     //Start and stop trail on swipe start and end
-    private void OnSwipeStart(Vector2 SP, int TC)
+    private void OnSwipeStart(Vector2 SP, int TC) //SP and TC aren't used
     {
         trail.SetActive(true);
     }
-    private void OnSwipeEnd(Vector2 a, Vector2 b, float c, int d)
+    private void OnSwipeEnd(Vector2 a, Vector2 b, float c, int d) // variables aren't used
     {
-
         trail.SetActive(false);
     }
     //when event is called do raycast on move position
