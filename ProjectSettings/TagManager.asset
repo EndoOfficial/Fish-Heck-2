@@ -21,6 +21,8 @@ TagManager:
   - Shrimp
   - Jellyfish
   - Whale
+  - Obstacle
+  - Food
   layers:
   - Default
   - TransparentFX
@@ -32,8 +34,8 @@ TagManager:
   - Iceberg
   - Sushi
   - Player
-  - 
-  - 
+  - Obstacle
+  - Food
   - 
   - 
   - 
