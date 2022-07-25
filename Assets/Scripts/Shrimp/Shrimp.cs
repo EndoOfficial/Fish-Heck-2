@@ -9,11 +9,13 @@ public class Shrimp : MonoBehaviour
     private Rigidbody rb;
     public Camera cam;
     private Vector2 point;
+    [SerializeField, Range(0, 30)] private float gravity;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
+        Physics.gravity = new Vector3(0,-gravity,0);
     }
 
     private void OnEnable()

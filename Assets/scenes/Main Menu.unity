@@ -975,6 +975,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 971043696551101683, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 971043696551101684, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 971043696551101685, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 971043696551101686, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 971043696551101688, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8363817739261361084, guid: ec873ae1a5ddeb44b9a419f852ca0e7a, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1618,6 +1638,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5686191754022761241, guid: 09557da7b8ba49449be91a38789e2ebc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686191754022761242, guid: 09557da7b8ba49449be91a38789e2ebc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686191754022761243, guid: 09557da7b8ba49449be91a38789e2ebc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686191754022761244, guid: 09557da7b8ba49449be91a38789e2ebc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5686191754022761246, guid: 09557da7b8ba49449be91a38789e2ebc, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7110595972457495811, guid: 09557da7b8ba49449be91a38789e2ebc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2837,11 +2877,10 @@ MonoBehaviour:
   life: {fileID: 0}
   fishCoinUI: {fileID: 534078459}
   loseScreen: {fileID: 0}
-  _playerScore: 0
+  playerScore: 0
   CoinScore:
     m_PersistentCalls:
       m_Calls: []
-  CSpawnPointsLibrary: []
   coinPrefab: {fileID: 0}
   TiltTrigger:
     m_PersistentCalls:

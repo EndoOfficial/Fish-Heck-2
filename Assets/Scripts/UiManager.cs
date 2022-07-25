@@ -38,6 +38,11 @@ public class UiManager : MonoBehaviour
         Time.timeScale = 1f;
         Screen.orientation = ScreenOrientation.Portrait;
     }
+    public void LoadReefLevel()
+    {
+        SceneManager.LoadScene("Eel");
+        Time.timeScale = 1f;
+    }
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("Main Menu");

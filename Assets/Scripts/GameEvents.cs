@@ -36,4 +36,6 @@ public static class GameEvents
     public static Action Poison; // poison food on plates
     public static Action PlayerDeath;// shark bait player dies, part of two part event that converts score to fishcoin
     public static Action JellyDestroy;// when jelly fish are eaten by the whale
+    public static Action CutSound; // play sound
+    public static Action Cut; // when fish is cut
 }

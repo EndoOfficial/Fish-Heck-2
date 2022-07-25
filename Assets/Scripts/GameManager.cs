@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
     public Image loseScreen;
     public int playerScore;
     public EventTrigger.TriggerEvent CoinScore;
-    public Transform[] CSpawnPointsLibrary;
     public Coin coinPrefab;
     private int thresholdCount; // Gives a score threshold for the tilt to occur at 5 point intervals
     public EventTrigger.TriggerEvent TiltTrigger;
@@ -69,7 +68,6 @@ public class GameManager : MonoBehaviour
         {
             GameEvents.TiltTrigger?.Invoke();
             thresholdCount = 0;
-            Debug.Log("tilt");
         }
         //player score that player sees
         playerScore += setScore;

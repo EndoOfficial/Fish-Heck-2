@@ -86,7 +86,6 @@ public class CoinSpawner : MonoBehaviour
         // so raycast again to get exact spawn point on the iceberg's box collider (not colliders of child objects)
         RaycastHit spawnHit;
         Physics.Raycast(rayCastOrigin, Vector3.down, out spawnHit, rayCastHeight * 2f, spawnLayerMask);
-        Debug.Log("position" + spawnHit.transform.position);
         return spawnHit.point;
         //return randomPosition;
     }
