@@ -21,6 +21,7 @@ public class Movement : MonoBehaviour
     private void Start()
     {
         ResetState();
+        /*StartCoroutine(Moves());*/
     }
     public void ResetState()
     {
@@ -45,6 +46,17 @@ public class Movement : MonoBehaviour
         Vector2 translation = this.direction * this.speed * this.speedMultiplier * Time.fixedDeltaTime;
         this.rigidbody.MovePosition(position + translation);
     }
+
+   /* private IEnumerator Moves()
+    {
+        while (true)
+        {
+            transform.position = new Vector2(Mathf.Round(transform.position.x)+ direction.x, Mathf.Round(transform.position.y)+ direction.y);
+            yield return new WaitForSecondsRealtime(.1f);
+            Debug.Log("here");
+        }
+    }*/
+
     public void SetDirection(Vector2 direction, bool forced = false)
     { //allows for the buffering of inputs otherwise inputs would need to be stupid precise
         if(forced || !Occupied(direction))

@@ -12,9 +12,9 @@ public class Eel : MonoBehaviour
     {
         ResetState();
     }
-   /* private void Update()
+ /*   private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             direction = Vector2.up;
         }
@@ -30,18 +30,18 @@ public class Eel : MonoBehaviour
         {
             direction = Vector2.right;
         }
-    }
+    }*/
     private void FixedUpdate() //movement is done through physics so using fixed update is key to a consistant experience
     {                          //Mathf.Round rounds the number to whole numbers, allowing for the griddy movement to work properly
-        for (int i = segments.Count - 1; i > 0; i-- )
+        for (int i = segments.Count - 1; i > 0; i--)
         {
             segments[i].position = segments[i - 1].position;
         }
-        this.transform.position = new Vector3(
+       /* this.transform.position = new Vector3(
             Mathf.Round(this.transform.position.x) + direction.x,
             Mathf.Round(this.transform.position.y) + direction.y,
-            0.0f);
-    }*/
+            0.0f);*/
+    }
 
 
     public Movement movement { get; private set; }
@@ -69,6 +69,8 @@ public class Eel : MonoBehaviour
         }
         float angle = Mathf.Atan2(this.movement.direction.y, this.movement.direction.x);
         this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+
+       
     }
 
     private void ResetState()
