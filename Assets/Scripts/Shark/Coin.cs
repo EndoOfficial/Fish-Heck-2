@@ -19,7 +19,6 @@ public class Coin : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             GameEvents.FishScore?.Invoke(setScore);
-            Debug.Log("Player coin get");
             Destroy(this.gameObject);
         }
         

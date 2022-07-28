@@ -954,6 +954,65 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602069998}
   m_CullTransparentMesh: 1
+--- !u!1 &1634062160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1634062161}
+  - component: {fileID: 1634062163}
+  - component: {fileID: 1634062162}
+  m_Layer: 0
+  m_Name: Proximity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1634062161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634062160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2096480390}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1634062162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634062160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165c88815c85a6f42bcbb87103587491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+--- !u!65 &1634062163
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634062160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.0083575, z: 1}
+  m_Center: {x: 0, y: 0.5041774, z: 0}
 --- !u!1 &1692299758
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,7 +1050,6 @@ MonoBehaviour:
   CoinScore:
     m_PersistentCalls:
       m_Calls: []
-  CSpawnPointsLibrary: []
   coinPrefab: {fileID: 4087739759223365617, guid: 06e3b0c9b710de9468872a346243c320, type: 3}
   TiltTrigger:
     m_PersistentCalls:
@@ -1453,8 +1511,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 305ea12600cc61847bfc7b784dffe766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpforce: 10
-  cam: {fileID: 0}
+  jumpforce: 20
+  cam: {fileID: 1730329392}
+  gravity: 15.3
 --- !u!1 &2056490190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1629,7 +1688,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -20, z: 0}
   m_LocalScale: {x: 50, y: 20, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1634062161}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

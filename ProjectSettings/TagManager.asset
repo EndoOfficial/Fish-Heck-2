@@ -23,6 +23,7 @@ TagManager:
   - Whale
   - Obstacle
   - Food
+  - SquidHalf
   layers:
   - Default
   - TransparentFX
