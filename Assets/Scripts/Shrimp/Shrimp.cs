@@ -44,6 +44,14 @@ public class Shrimp : MonoBehaviour
                 rb.AddForce(Vector2.up * jumpforce, ForceMode.Impulse);
             }
         }
+        else if (other.tag == "Jellyfish2")
+        {
+            if (rb.velocity.y < 0f)
+            {
+                rb.velocity = new Vector2(0, 0);
+                rb.AddForce(Vector2.up * jumpforce/2, ForceMode.Impulse);
+            }
+        }
         if (other.tag == "Whale")
         {
             Destroy(this.gameObject);

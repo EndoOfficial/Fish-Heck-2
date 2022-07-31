@@ -1705,7 +1705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9987f19f8f05ea4894cf76a19d65374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  moveSpeed: 4
 --- !u!1 &2122587230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1736,13 +1736,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jellyCount: 50
+  falseJellyCount: 0
   count: 0
-  minDist: 0.5
-  maxDist: 2
+  minDist: 1
+  maxDist: 4
   spawnPosition: {x: 0, y: 0}
-  falseSpawnPosition: {x: 0, y: 0}
+  smallSpawnPosition: {x: 0, y: 0}
   Whale: {fileID: 2096480386}
   jellyPrefab: {fileID: 6051255080917931218, guid: 60d487aededac6a46b90d63e35432296, type: 3}
+  smallJellyPrefab: {fileID: 0}
+  fakeJellyPrefab: {fileID: 0}
 --- !u!4 &2122587232
 Transform:
   m_ObjectHideFlags: 0

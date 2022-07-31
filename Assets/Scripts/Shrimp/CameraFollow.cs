@@ -27,9 +27,9 @@ public class CameraFollow : MonoBehaviour
             }
         }
         
-        if (Whale.position.y < transform.position.y - 35f)
+        if (Whale.position.y < transform.position.y - 50f)
         {
-            Whale.position = new Vector2(Whale.position.x, transform.position.y - 35f);
+            Whale.position = new Vector2(Whale.position.x, transform.position.y - 50f);
         }
     }
 }
