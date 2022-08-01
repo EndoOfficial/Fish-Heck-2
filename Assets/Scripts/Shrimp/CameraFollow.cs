@@ -8,6 +8,7 @@ public class CameraFollow : MonoBehaviour
     public Transform Whale;
     private int setScore = 1;
     private int count = 0;
+    public float whaleDist;
 
     private void LateUpdate()
     {
@@ -28,9 +29,9 @@ public class CameraFollow : MonoBehaviour
             }
         }
         
-        if (Whale.position.y < transform.position.y - 35f)
+        if (Whale.position.y < transform.position.y - whaleDist)
         {
-            Whale.position = new Vector2(Whale.position.x, transform.position.y - 35f);
+            Whale.position = new Vector2(Whale.position.x, transform.position.y - whaleDist);
         }
     }
 }

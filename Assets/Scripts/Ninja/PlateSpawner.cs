@@ -16,7 +16,7 @@ public class PlateSpawner : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.Pause += Pause;
-        GameEvents.Resume -= Resume;
+        GameEvents.Resume += Resume;
     }
 
     private void OnDisable()

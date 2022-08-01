@@ -12,10 +12,16 @@ public class JellyControl : MonoBehaviour
     public Vector2 spawnPosition;
     public Vector2 smallSpawnPosition;
 
+    private int nCount = 10;
+    private int sCount = 5;
+
     public GameObject Whale;
     public GameObject jellyPrefab;
     public GameObject smallJellyPrefab;
     public GameObject fakeJellyPrefab;
+
+    private float jellyMoveCount;
+    private float smallJellyMoveCount;
 
     // Start is called before the first frame update
     void Start()
@@ -49,13 +55,42 @@ public class JellyControl : MonoBehaviour
         //normal jellyfish
         spawnPosition.y += Random.Range(minDist, maxDist);
         spawnPosition.x = Random.Range(-8f, 8f);
-        obj.transform.position = spawnPosition;
+        if (jellyMoveCount >= nCount)
+        {
+            Destroy(obj.gameObject);
+            jellyMoveCount = 0;
+            nCount--;
+            if (nCount < 4)
+            {
+                nCount = 4;
+            }
+        }
+        else
+        {
+            obj.transform.position = spawnPosition;
+            jellyMoveCount++;
+        }
     }
     private void SmallJellyMove(Collider obj)
     {
         //small jellyfish
-        smallSpawnPosition.y += Random.Range(2f, 15f);
+        smallSpawnPosition.y += Random.Range(2f, 5f);
         smallSpawnPosition.x = Random.Range(-8f, 8f);
+        if (smallJellyMoveCount >= sCount)
+        {
+            Destroy(obj.gameObject);
+            smallJellyMoveCount = 0;
+            sCount--;
+            if(sCount < 2)
+            {
+                sCount = 2;
+            }
+        }
+        else
+        {
         obj.transform.position = smallSpawnPosition;
+        smallJellyMoveCount++;
+        }
+        
     }
 }

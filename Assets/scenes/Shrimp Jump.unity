@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Shrimp: {fileID: 1874371504}
   Whale: {fileID: 2096480390}
+  whaleDist: 35
 --- !u!1 &1756204121
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,8 +1512,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -100, y: -80}
-  m_SizeDelta: {x: 800, y: 300}
+  m_AnchoredPosition: {x: -200, y: -80}
+  m_SizeDelta: {x: 1000, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1771976852
 MonoBehaviour:

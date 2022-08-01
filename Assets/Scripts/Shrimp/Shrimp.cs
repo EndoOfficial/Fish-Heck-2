@@ -16,7 +16,6 @@ public class Shrimp : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         Physics.gravity = new Vector3(0,-gravity,0);
-        Debug.Log("gravity here");
     }
 
     private void OnEnable()
