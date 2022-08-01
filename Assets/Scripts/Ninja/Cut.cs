@@ -44,7 +44,7 @@ public class Cut : MonoBehaviour
     private void OnSwipeMove(Vector2 movePosition, Vector2 moveDirection, float moveSpeed, int touchCount)
     {
         point = cam.ScreenToWorldPoint(movePosition);
-        transform.position = new Vector3(point.x, point.y, point.z-1f);
+        transform.position = new Vector3(point.x, point.y, point.z+2f);
     }
 
     private void cutParticle()
