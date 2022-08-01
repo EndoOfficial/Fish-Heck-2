@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Pellet : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int setScore = 1;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        // send event for scoring
+        if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+        {
+            GameEvents.FishScore?.Invoke(setScore);
+            this.gameObject.SetActive(false);
+        }
     }
 }

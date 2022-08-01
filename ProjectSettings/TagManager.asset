@@ -37,10 +37,10 @@ TagManager:
   - Player
   - Obstacle
   - Food
-  - 
-  - 
-  - 
-  - 
+  - Pellet
+  - Crab
+  - Node
+  - Tail
   - 
   - 
   - 

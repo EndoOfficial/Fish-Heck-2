@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class CrabBaby : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private int setScore = 15;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        // send event for scoring
+        if (other.gameObject.tag == "Player")
+        {
+            GameEvents.FishScore?.Invoke(setScore);
+            Destroy(this.gameObject);
+        }
+        //trigger the crab aggro
     }
 }

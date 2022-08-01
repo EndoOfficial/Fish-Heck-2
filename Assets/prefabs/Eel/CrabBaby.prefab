@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2729521753762476527}
   - component: {fileID: 6390885976560479126}
   - component: {fileID: 9063319673626411020}
+  - component: {fileID: 7869107816187749495}
   m_Layer: 11
   m_Name: CrabBaby
   m_TagString: Food
@@ -111,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7869107816187749495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5789511151924231490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62423a58b52ea0d4cac0b497df612445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
