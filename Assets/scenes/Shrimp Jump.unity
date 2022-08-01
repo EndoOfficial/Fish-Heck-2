@@ -1744,7 +1744,7 @@ MonoBehaviour:
   smallSpawnPosition: {x: 0, y: 0}
   Whale: {fileID: 2096480386}
   jellyPrefab: {fileID: 6051255080917931218, guid: 60d487aededac6a46b90d63e35432296, type: 3}
-  smallJellyPrefab: {fileID: 0}
+  smallJellyPrefab: {fileID: 6051255080917931218, guid: 9f89cdeab28d33842880280e98b7996c, type: 3}
   fakeJellyPrefab: {fileID: 0}
 --- !u!4 &2122587232
 Transform:

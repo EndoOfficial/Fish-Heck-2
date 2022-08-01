@@ -42,6 +42,7 @@ public class Shrimp : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(Vector2.up * jumpforce, ForceMode.Impulse);
+                other.GetComponent<AudioSource>().Play();
             }
         }
         else if (other.tag == "Jellyfish2")
@@ -50,6 +51,7 @@ public class Shrimp : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(Vector2.up * jumpforce/2, ForceMode.Impulse);
+                other.GetComponent<AudioSource>().Play();
             }
         }
         if (other.tag == "Whale")
