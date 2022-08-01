@@ -16,6 +16,7 @@ public class Shrimp : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         cam = Camera.main;
         Physics.gravity = new Vector3(0,-gravity,0);
+        Debug.Log("gravity here");
     }
 
     private void OnEnable()
@@ -50,7 +51,7 @@ public class Shrimp : MonoBehaviour
             if (rb.velocity.y < 0f)
             {
                 rb.velocity = new Vector2(0, 0);
-                rb.AddForce(Vector2.up * jumpforce/2, ForceMode.Impulse);
+                rb.AddForce(Vector2.up * jumpforce/1.5f, ForceMode.Impulse);
                 other.GetComponent<AudioSource>().Play();
             }
         }

@@ -23,13 +23,14 @@ public class CameraFollow : MonoBehaviour
                 {
                     count = 0;
                     GameEvents.FishScore?.Invoke(setScore);
+                    GameEvents.Difficulty?.Invoke();
                 }
             }
         }
         
-        if (Whale.position.y < transform.position.y - 50f)
+        if (Whale.position.y < transform.position.y - 35f)
         {
-            Whale.position = new Vector2(Whale.position.x, transform.position.y - 50f);
+            Whale.position = new Vector2(Whale.position.x, transform.position.y - 35f);
         }
     }
 }

@@ -35,23 +35,27 @@ public class JellyControl : MonoBehaviour
     }
     private void OnEnable()
     {
-        GameEvents.JellyDestroy += JellyDestroy;
+        GameEvents.JellyMove += JellyMove;
+        GameEvents.SmallJellyMove += SmallJellyMove;
     }
     private void OnDisable()
     {
-        GameEvents.JellyDestroy -= JellyDestroy;
+        GameEvents.JellyMove -= JellyMove;
+        GameEvents.SmallJellyMove -= SmallJellyMove;
     }
 
-    private void JellyDestroy()
+    private void JellyMove(Collider obj)
     {
         //normal jellyfish
         spawnPosition.y += Random.Range(minDist, maxDist);
         spawnPosition.x = Random.Range(-8f, 8f);
-        Instantiate(jellyPrefab, spawnPosition, Quaternion.identity);
-
+        obj.transform.position = spawnPosition;
+    }
+    private void SmallJellyMove(Collider obj)
+    {
         //small jellyfish
-        smallSpawnPosition.y += Random.Range(5f, 10f);
+        smallSpawnPosition.y += Random.Range(2f, 15f);
         smallSpawnPosition.x = Random.Range(-8f, 8f);
-        Instantiate(smallJellyPrefab, smallSpawnPosition, Quaternion.identity);
+        obj.transform.position = smallSpawnPosition;
     }
 }
