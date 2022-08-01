@@ -26,6 +26,12 @@ public static class GameEvents
     public delegate void SharkEatDelegate(int setScore);
     public static SharkEatDelegate SharkEat; //When shark eats the coin
 
+    public delegate void JellyMoveDelegate(Collider obj);
+    public static JellyMoveDelegate JellyMove;// when jellyfish are eaten by the whale
+
+    public delegate void SmallJellyMoveDelegate(Collider obj);
+    public static SmallJellyMoveDelegate SmallJellyMove;// when small jellyfish are eaten by the whale
+
     public static Action platformTiltTrigger; //score has reached threshold to tilt the platform
     public static Action TiltTrigger; //platform tilting
     public static Action GameOver; //Game Over
@@ -35,7 +41,6 @@ public static class GameEvents
     public static Action LoseLife; // miss fish / hit poison
     public static Action Poison; // poison food on plates
     public static Action PlayerDeath;// shark bait player dies, part of two part event that converts score to fishcoin
-    public static Action JellyDestroy;// when jelly fish are eaten by the whale
     public static Action CutSound; // play sound
     public static Action Cut; // when fish is cut
 }

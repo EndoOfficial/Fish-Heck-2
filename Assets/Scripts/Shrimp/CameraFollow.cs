@@ -23,6 +23,7 @@ public class CameraFollow : MonoBehaviour
                 {
                     count = 0;
                     GameEvents.FishScore?.Invoke(setScore);
+                    GameEvents.Difficulty?.Invoke();
                 }
             }
         }

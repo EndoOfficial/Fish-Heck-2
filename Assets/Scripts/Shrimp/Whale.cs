@@ -16,8 +16,12 @@ public class Whale : MonoBehaviour
     {
         if (other.tag == "Jellyfish")
         {
-            Destroy(other.gameObject);
-            GameEvents.JellyDestroy?.Invoke();
+            GameEvents.JellyMove?.Invoke(other);
+        }
+
+        else if (other.tag == "Jellyfish2")
+        {
+            GameEvents.SmallJellyMove?.Invoke(other);
         }
     }
 }

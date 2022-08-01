@@ -24,6 +24,7 @@ TagManager:
   - Obstacle
   - Food
   - SquidHalf
+  - Jellyfish2
   layers:
   - Default
   - TransparentFX

@@ -12,5 +12,10 @@ public class WhaleSuck : MonoBehaviour
             var step = speed * Time.deltaTime;
             other.transform.position = Vector3.MoveTowards(other.transform.position, transform.parent.position, step);
         }
+        else if (other.CompareTag("Jellyfish2"))
+        {
+            var step = speed * Time.deltaTime;
+            other.transform.position = Vector3.MoveTowards(other.transform.position, transform.parent.position, step);
+        }
     }
 }
