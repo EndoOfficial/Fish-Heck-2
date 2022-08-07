@@ -5,13 +5,17 @@ using UnityEngine;
 public class CrabBaby : MonoBehaviour
 {
     private int setScore = 15;
+    public GameObject crab;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         // send event for scoring
+        //spawn crab
         if (other.gameObject.tag == "Player")
         {
             GameEvents.FishScore?.Invoke(setScore);
+            //pick from spawn points
+            Instantiate(crab); 
             Destroy(this.gameObject);
         }
         //trigger the crab aggro

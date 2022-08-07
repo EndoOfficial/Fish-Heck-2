@@ -43,4 +43,5 @@ public static class GameEvents
     public static Action PlayerDeath;// shark bait player dies, part of two part event that converts score to fishcoin
     public static Action CutSound; // play sound
     public static Action Cut; // when fish is cut
+    public static Action EelReset; //resets eel under lose life conditions
 }

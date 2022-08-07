@@ -124,3 +124,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62423a58b52ea0d4cac0b497df612445, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crab: {fileID: 7406100336016169445, guid: 0b21fd447a0428f4e97f392011247d77, type: 3}

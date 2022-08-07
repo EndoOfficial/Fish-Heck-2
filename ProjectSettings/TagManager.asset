@@ -25,6 +25,8 @@ TagManager:
   - Food
   - SquidHalf
   - Jellyfish2
+  - Tail
+  - Crab
   layers:
   - Default
   - TransparentFX

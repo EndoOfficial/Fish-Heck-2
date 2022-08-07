@@ -8,6 +8,8 @@ public class Eel : MonoBehaviour
     private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 4;
+    public Joystick joystick;
+
     private void Start()
     {
         ResetState();
@@ -43,7 +45,14 @@ public class Eel : MonoBehaviour
             0.0f);*/
     }
 
-
+    private void OnEnable()
+    {
+        GameEvents.EelReset += ResetState;
+    }
+    private void OnDisable()
+    {
+        GameEvents.EelReset -= ResetState;
+    }
     public Movement movement { get; private set; }
     private void Awake()
     {
@@ -51,6 +60,48 @@ public class Eel : MonoBehaviour
     }
     private void Update()
     {
+        //touch joystick code, seems to require horizontal, vertical inputs rather than vector2 so either adapt the movement script or look for different touch input
+
+        /*float horizontalMove = joystick.Horizontal;
+        bool jsRight = false;
+        bool jsLeft = false;
+        bool jsUp = false;
+        bool jsDown = false;*/
+
+
+       /* if (horizontalMove >= 0.2f)
+        {
+            jsRight = true;
+            jsLeft = false;
+        }
+        else if (horizontalMove <= 0.2f)
+        {
+            jsRight = false;
+            jsLeft = true;
+        }
+        else
+        {
+            jsRight = false;
+            jsLeft = false;
+        }
+
+        float verticalMove = joystick.Vertical;
+
+        if (verticalMove >= 0.2f)
+        {
+            jsUp = true;
+            jsDown = false;
+        }
+        else if (verticalMove <= 0.2f)
+        {
+            jsUp = false;
+            jsDown = true;
+        }
+        else
+        {
+            jsUp = false;
+            jsDown = false;
+        }*/
         if (Input.GetKeyDown(KeyCode.W))
         {
             this.movement.SetDirection(Vector2.up);
@@ -59,7 +110,7 @@ public class Eel : MonoBehaviour
         {
             this.movement.SetDirection(Vector2.down);
         }
-        else if (Input.GetKeyDown(KeyCode.D))
+        else if ( Input.GetKeyDown(KeyCode.D))
         {
             this.movement.SetDirection(Vector2.right);
         }
@@ -70,10 +121,11 @@ public class Eel : MonoBehaviour
         float angle = Mathf.Atan2(this.movement.direction.y, this.movement.direction.x);
         this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
 
-       
+        //jesus christ zach, what have you done
+
     }
 
-    private void ResetState()
+    private void ResetState() //resets the player
     {
         for (int i =1; i < segments.Count; i++)
         {
@@ -96,15 +148,19 @@ public class Eel : MonoBehaviour
         segment.position = segments[segments.Count - 1].position;
         segments.Add(segment);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other) 
     {
         if (other.tag == "Food")
         {
             Grow();
         }
-        else if (other.tag == "Obstacle")
+     
+    }
+    private void OnCollisionEnter2D(Collision2D other) //destroys the crab when eaten
+    {
+        if(other.gameObject.layer == LayerMask.NameToLayer("Crab"))
         {
-            ResetState();
+            Destroy(other.gameObject);
         }
     }
 }

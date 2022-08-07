@@ -11,28 +11,12 @@ public class Crab : MonoBehaviour
     public CrabBehaviour initialBehavior;
     public Transform target;
     public int setScore = 50;
-    private void Awake()
-    {
-        this.movement = GetComponent<Movement>();
-        this.scatter = GetComponent<CrabScatter>();
-        this.chase = GetComponent<CrabChase>();
-    }
+    private bool canAttack; //bool to have the crab stop merkin the player so hard
+    private float IFrames = 3f;
+
     private void Start()
     {
-        ResetState();
-    }
-    public void ResetState() //has the crab start off roaming for difficulties sake
-    {
-        this.gameObject.SetActive(true);
-        this.movement.ResetState();
-
-        this.chase.Disable();
-        this.scatter.Enable();
-
-        if (this.initialBehavior != null)
-        {
-            this.initialBehavior.Enable();
-        }
+        canAttack = true;
     }
     private void OnCollisionEnter2D(Collision2D collision) //ghost collision with pacman
     {
@@ -40,9 +24,22 @@ public class Crab : MonoBehaviour
         {
             GameEvents.FishScore?.Invoke(setScore);
         }
-        if (collision.gameObject.layer == LayerMask.NameToLayer("Tail"))
+     
+    }
+    private void OnTriggerEnter2D(Collider2D collision) //tail must be trigger to not effect the head
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Tail") && (canAttack = true)) 
         {
-            //damage tail or take life 
+            GameEvents.LoseLife?.Invoke(); //lose ui int
+            GameEvents.EelReset?.Invoke(); //reset the eels growth
+            //cooldown to stop overeating
+            StartCoroutine(DamageCooldown());
         }
+    }
+    private IEnumerator DamageCooldown()
+    {
+        canAttack = false;
+        yield return new WaitForSeconds(IFrames);
+        canAttack = true;
     }
 }
