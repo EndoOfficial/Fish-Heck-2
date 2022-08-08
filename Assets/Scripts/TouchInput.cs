@@ -20,6 +20,22 @@ public class TouchInput : MonoBehaviour
 
 	private float swipeThreshold = 20f;     // anything less not considered a valid swipe (ie. a tap or accidental swipe)
 
+	public enum SwipeCardinal
+	{
+		None,
+		Up,
+		Down,
+		Left,
+		Right,
+		Tap
+
+	};
+	private Vector3[] Directions90 = {
+		Vector3.up,
+		Vector3.down,
+		Vector3.left,
+		Vector3.right,
+	};
 
 	private void Update()
 	{
@@ -81,6 +97,50 @@ public class TouchInput : MonoBehaviour
 		}
 	}
 
+	private void GetSwipeCardinal()
+	{
+		var swipeDistance = (endPosition - startPosition).magnitude;
+		Vector3 clampedDirection = ClampTo90(moveDirection);        // normalised
+		SwipeCardinal cardinal = SwipeCardinal.None;
+
+		if (swipeDistance < swipeThreshold)     // ie. a tap or accidental swipe
+		{
+			cardinal = SwipeCardinal.Tap;
+		}
+		else        // valid swipe
+		{
+			if (clampedDirection == Vector3.up)
+				cardinal = SwipeCardinal.Up;
+			else if (clampedDirection == Vector3.down)
+				cardinal = SwipeCardinal.Down;
+			else if (clampedDirection == Vector3.left)
+				cardinal = SwipeCardinal.Left;
+			else if (clampedDirection == Vector3.right)
+				cardinal = SwipeCardinal.Right;
+		}
+
+		//Debug.Log($"GetCardinal {cardinal} swipeDistance {swipeDistance}");
+		if (cardinal != SwipeCardinal.None)
+			GameEvents.OnSwipeCardinal?.Invoke(cardinal);
+	}
+	private Vector3 ClampTo90(Vector3 direction)
+	{
+		Vector3 result = Directions90[0];
+		float nearest = Vector3.Dot(direction, Directions90[0]);      // .Dot returns 1 to -1 to indicate closeness to vertical (0 is horizontal)
+
+		for (int i = 1; i < Directions90.Length; i++)
+		{
+			var dotToCompare = Vector3.Dot(direction, Directions90[i]);
+
+			if (dotToCompare > nearest)
+			{
+				nearest = dotToCompare;
+				result = Directions90[i];
+			}
+		}
+
+		return result;
+	}
 	private void StartTouch(Vector2 screenPosition, int touchCount)
 	{
 		startPosition = screenPosition;
@@ -132,5 +192,7 @@ public class TouchInput : MonoBehaviour
 		{
 			GameEvents.OnSwipeEnd?.Invoke(endPosition, moveDirection, moveSpeed, touchCount);
 		}
+
+		GetSwipeCardinal();     // if a 'valid' swipe
 	}
 }

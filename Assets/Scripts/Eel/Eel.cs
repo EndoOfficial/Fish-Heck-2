@@ -48,10 +48,34 @@ public class Eel : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.EelReset += ResetState;
+        GameEvents.OnSwipeCardinal += OnSwipeCardinal;
     }
     private void OnDisable()
     {
         GameEvents.EelReset -= ResetState;
+        GameEvents.OnSwipeCardinal -= OnSwipeCardinal;
+    }
+
+    private void OnSwipeCardinal(TouchInput.SwipeCardinal cardinal)
+    {
+        if (cardinal == TouchInput.SwipeCardinal.Up)
+        {
+            this.movement.SetDirection(Vector2.up);
+        }
+        else if (cardinal == TouchInput.SwipeCardinal.Down)
+        {
+            this.movement.SetDirection(Vector2.down);
+        }
+        else if (cardinal == TouchInput.SwipeCardinal.Right)
+        {
+            this.movement.SetDirection(Vector2.right);
+        }
+        else if (cardinal == TouchInput.SwipeCardinal.Left)
+        {
+            this.movement.SetDirection(Vector2.left);
+        }
+        float angle = Mathf.Atan2(this.movement.direction.y, this.movement.direction.x);
+        this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
     }
     public Movement movement { get; private set; }
     private void Awake()
@@ -140,7 +164,6 @@ public class Eel : MonoBehaviour
         }
         this.transform.position = Vector3.zero;
         this.movement.ResetState();
-        this.gameObject.SetActive(true);
     }
     private void Grow()
     {

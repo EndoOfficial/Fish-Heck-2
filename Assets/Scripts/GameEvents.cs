@@ -14,6 +14,9 @@ public static class GameEvents
     public delegate void OnSwipeEndDelegate(Vector2 endPosition, Vector2 moveDirection, float moveSpeed, int touchCount);
     public static OnSwipeEndDelegate OnSwipeEnd;
 
+    public delegate void OnSwipeCardinalDelegate(TouchInput.SwipeCardinal cardinal);
+    public static OnSwipeCardinalDelegate OnSwipeCardinal;
+
     public delegate void FishScoreDelegate(int setScore);
     public static FishScoreDelegate FishScore; 
 
