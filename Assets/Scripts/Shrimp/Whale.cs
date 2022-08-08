@@ -6,11 +6,15 @@ using UnityEngine;
 public class Whale : MonoBehaviour
 {
     public float moveSpeed;
+    private bool gameOver = false;
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector2(transform.position.x, transform.position.y + moveSpeed/1f *Time.deltaTime);
+        if (!gameOver)
+        {
+            transform.position = new Vector2(transform.position.x, transform.position.y + moveSpeed / 1f * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,15 +32,24 @@ public class Whale : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.Difficulty += Difficulty;
+        GameEvents.GameOver += GameOver;
     }
     private void OnDisable()
     {
         
         GameEvents.Difficulty -= Difficulty;
+        GameEvents.GameOver -= GameOver;
     }
 
     private void Difficulty()
     {
-        moveSpeed += 0.01f;
+        if (moveSpeed <= 6.2f)
+        {
+            moveSpeed += 0.01f;
+        }
+    }
+    private void GameOver()
+    {
+        gameOver = true;
     }
 }

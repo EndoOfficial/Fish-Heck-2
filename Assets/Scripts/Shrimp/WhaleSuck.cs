@@ -5,17 +5,37 @@ using UnityEngine;
 public class WhaleSuck : MonoBehaviour
 {
     public float speed;
+    private bool gameOver = false;
+
+    private void OnEnable()
+    {
+        GameEvents.GameOver += GameOver;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.GameOver -= GameOver;
+    }
+
+    private void GameOver()
+    {
+        gameOver = true;
+    }
+
     private void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Jellyfish"))
+        if (!gameOver)
         {
-            var step = speed * Time.deltaTime;
-            other.transform.position = Vector3.MoveTowards(other.transform.position, transform.parent.position, step);
-        }
-        else if (other.CompareTag("Jellyfish2"))
-        {
-            var step = speed * Time.deltaTime;
-            other.transform.position = Vector3.MoveTowards(other.transform.position, transform.parent.position, step);
+            if (other.CompareTag("Jellyfish"))
+            {
+                var step = speed * Time.deltaTime;
+                other.transform.position = Vector3.MoveTowards(other.transform.position, transform.parent.position, step);
+            }
+            else if (other.CompareTag("Jellyfish2"))
+            {
+                var step = speed * Time.deltaTime;
+                other.transform.position = Vector3.MoveTowards(other.transform.position, transform.parent.position, step);
+            }
         }
     }
 }
