@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7406100336016169445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.02, y: -5.45, z: 0.01322667}
+  m_LocalPosition: {x: -28.09, y: 16.84, z: 0.01322667}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -121,8 +121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   version: 1
-  target: {fileID: 0}
-  player: {fileID: 0}
+  target: {fileID: 4747264798241558297, guid: 31ee60e53b1a4804798208491be176ff, type: 3}
+  player: {fileID: 4747264798241558306, guid: 31ee60e53b1a4804798208491be176ff, type: 3}
 --- !u!50 &7406100336016169471
 Rigidbody2D:
   serializedVersion: 4
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialBehavior: {fileID: 0}
-  target: {fileID: 0}
+  target: {fileID: 4747264798241558297, guid: 31ee60e53b1a4804798208491be176ff, type: 3}
   setScore: 50
 --- !u!1 &7406100336681068484
 GameObject:

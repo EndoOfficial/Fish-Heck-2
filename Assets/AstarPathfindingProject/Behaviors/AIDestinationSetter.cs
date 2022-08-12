@@ -20,6 +20,7 @@ namespace Pathfinding {
 		IAstarAI ai;
         private void Start()
         { //theoritically should set the target once the crabs have spawned
+			player = GameObject.Find("Player"); //finds the player that is in the scene and sets
             target = player.gameObject.transform;
         }
        
@@ -38,7 +39,7 @@ namespace Pathfinding {
 
 		/// <summary>Updates the AI's destination every frame</summary>
 		void Update () {
-			if (target != null && ai != null) ai.destination = target.position;
+			if (target != null && ai != null) ai.destination = player.transform.position;
 		}
 	}
 }

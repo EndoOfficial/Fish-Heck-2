@@ -5,15 +5,6 @@ using Pathfinding;
 
 public class Crab : MonoBehaviour
 {
-    public Rigidbody2D rigidbody { get; private set; }
-
-    private AIPath aiPath;
-    public Movement movement { get; private set; }
-
-    public CrabScatter scatter { get; private set; }
-    public CrabChase chase { get; private set; }
-    public CrabBehaviour initialBehavior;
-    public Transform target;
     public int setScore = 50;
     private bool canAttack; //bool to have the crab stop merkin the player so hard
     private float IFrames = 3f;

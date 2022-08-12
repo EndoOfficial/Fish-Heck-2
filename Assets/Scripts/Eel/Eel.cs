@@ -8,41 +8,18 @@ public class Eel : MonoBehaviour
     private List<Transform> segments = new List<Transform>();
     public Transform segmentPrefab;
     public int initialSize = 4;
-    public Joystick joystick;
 
     private void Start()
     {
-        ResetState();
+        ResetState(); //places the player with the starting amount of segments at the starting transform
     }
- /*   private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            direction = Vector2.up;
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            direction = Vector2.down;
-        }
-        else if (Input.GetKeyDown(KeyCode.A))
-        {
-            direction = Vector2.left;
-        }
-        else if (Input.GetKeyDown(KeyCode.D))
-        {
-            direction = Vector2.right;
-        }
-    }*/
+ 
     private void FixedUpdate() //movement is done through physics so using fixed update is key to a consistant experience
     {                          //Mathf.Round rounds the number to whole numbers, allowing for the griddy movement to work properly
         for (int i = segments.Count - 1; i > 0; i--)
         {
             segments[i].position = segments[i - 1].position;
         }
-       /* this.transform.position = new Vector3(
-            Mathf.Round(this.transform.position.x) + direction.x,
-            Mathf.Round(this.transform.position.y) + direction.y,
-            0.0f);*/
     }
 
     private void OnEnable()
@@ -58,6 +35,7 @@ public class Eel : MonoBehaviour
 
     private void OnSwipeCardinal(TouchInput.SwipeCardinal cardinal)
     {
+        //uses the movement scripts variables, moves in directions
         if (cardinal == TouchInput.SwipeCardinal.Up)
         {
             this.movement.SetDirection(Vector2.up);
@@ -75,7 +53,7 @@ public class Eel : MonoBehaviour
             this.movement.SetDirection(Vector2.left);
         }
         float angle = Mathf.Atan2(this.movement.direction.y, this.movement.direction.x);
-        this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+        this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward); //rotates the character around when moved
     }
     public Movement movement { get; private set; }
     private void Awake()
@@ -84,48 +62,8 @@ public class Eel : MonoBehaviour
     }
     private void Update()
     {
-        //touch joystick code, seems to require horizontal, vertical inputs rather than vector2 so either adapt the movement script or look for different touch input
+        //uses the movement scripts variables, moves in directions
 
-        /*float horizontalMove = joystick.Horizontal;
-        bool jsRight = false;
-        bool jsLeft = false;
-        bool jsUp = false;
-        bool jsDown = false;*/
-
-
-       /* if (horizontalMove >= 0.2f)
-        {
-            jsRight = true;
-            jsLeft = false;
-        }
-        else if (horizontalMove <= 0.2f)
-        {
-            jsRight = false;
-            jsLeft = true;
-        }
-        else
-        {
-            jsRight = false;
-            jsLeft = false;
-        }
-
-        float verticalMove = joystick.Vertical;
-
-        if (verticalMove >= 0.2f)
-        {
-            jsUp = true;
-            jsDown = false;
-        }
-        else if (verticalMove <= 0.2f)
-        {
-            jsUp = false;
-            jsDown = true;
-        }
-        else
-        {
-            jsUp = false;
-            jsDown = false;
-        }*/
         if (Input.GetKeyDown(KeyCode.W))
         {
             this.movement.SetDirection(Vector2.up);
@@ -143,13 +81,12 @@ public class Eel : MonoBehaviour
             this.movement.SetDirection(Vector2.left);
         }
         float angle = Mathf.Atan2(this.movement.direction.y, this.movement.direction.x);
-        this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward);
+        this.transform.rotation = Quaternion.AngleAxis(angle * Mathf.Rad2Deg, Vector3.forward); //rotates the character around when moved
 
-        //jesus christ zach, what have you done
 
     }
 
-    private void ResetState() //resets the player
+    private void ResetState() //resets the players segments and transform
     {
         for (int i =1; i < segments.Count; i++)
         {
@@ -165,7 +102,7 @@ public class Eel : MonoBehaviour
         this.transform.position = Vector3.zero;
         this.movement.ResetState();
     }
-    private void Grow()
+    private void Grow() //adds another segment and moves it along the eel
     {
         Transform  segment = Instantiate(this.segmentPrefab);
         segment.position = segments[segments.Count - 1].position;
