@@ -6,7 +6,6 @@ public class CrabBaby : MonoBehaviour
 {
     private int setScore = 15;
     public GameObject crab;
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         // send event for scoring
@@ -14,8 +13,7 @@ public class CrabBaby : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             GameEvents.FishScore?.Invoke(setScore);
-            //pick from spawn points
-            Instantiate(crab); 
+            GameEvents.CrabSpawn?.Invoke();
             Destroy(this.gameObject);
         }
         //trigger the crab aggro
