@@ -48,4 +48,5 @@ public static class GameEvents
     public static Action Cut; // when fish is cut
     public static Action EelReset; //resets eel under lose life conditions
     public static Action CrabSpawn; //spawns a crab
+    public static Action PelletCheck; //Pellet checking for resetting
 }

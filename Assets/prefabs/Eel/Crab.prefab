@@ -172,8 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49be9857c78a9174daf8998bd94ea0c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialBehavior: {fileID: 0}
-  target: {fileID: 4747264798241558297, guid: 31ee60e53b1a4804798208491be176ff, type: 3}
   setScore: 50
 --- !u!1 &7406100336681068484
 GameObject:

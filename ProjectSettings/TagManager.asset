@@ -28,6 +28,7 @@ TagManager:
   - Tail
   - Crab
   - Background
+  - Pellet
   layers:
   - Default
   - TransparentFX

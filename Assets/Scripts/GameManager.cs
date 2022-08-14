@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour
         fishCoinUI.text = gameData.FishCoin.ToString();
         }
         score.text = playerScore.ToString();
+        HasRemainingPellets();
     }
     private void OnEnable()
     {
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         GameEvents.PlayerDeath += OnDeathReset;
         GameEvents.FishCoinMinted += FishCoinToUI;
         GameEvents.GameOver += GameOver;
+        GameEvents.PelletCheck += PelletEaten;
     }
     private void OnDisable()
     {
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
         GameEvents.PlayerDeath -= OnDeathReset;
         GameEvents.FishCoinMinted -= FishCoinToUI;
         GameEvents.GameOver -= GameOver;
+        GameEvents.PelletCheck -= PelletEaten;
     }
     
     public void FishScore(int setScore)
@@ -107,4 +110,40 @@ public class GameManager : MonoBehaviour
         GameEvents.ScoreToMint(playerScore);
     }
 
+    //REEF RAIDER ZONE TODO CLEANUP
+    //VVVVVVVVVVVVVVVVVVVV
+
+    public Transform pellets;
+    public Eel eel;
+   
+    private bool HasRemainingPellets() //bool that flags whether or not there are still pellets on the field
+    {
+        //check for pellets via their transforms
+        foreach (Transform pellets in pellets)
+        {
+            if (pellets.gameObject.activeSelf)
+            {
+                return true; // there are still pellets in the scene
+            }
+        }
+        Debug.Log("Remaining pellets FALSE");
+        return false; //if there are no more pellets, return false
+    }
+    public void PelletEaten() //activates when a pellet is eaten thru events
+    {
+        Debug.Log("PelletEaten");
+
+        if (!HasRemainingPellets()) //once there are no more pellets, invoke new round
+        {
+            ResetPellets();
+        }
+    }
+    private void ResetPellets()
+    {
+        Debug.Log("ResetPellet");
+        foreach (Transform pellets in pellets) //all the pellets in should turn back on
+        {
+            pellets.gameObject.SetActive(true);
+        }
+    }
 }
