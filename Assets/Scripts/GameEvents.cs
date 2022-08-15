@@ -35,6 +35,7 @@ public static class GameEvents
     public delegate void SmallJellyMoveDelegate(Collider obj);
     public static SmallJellyMoveDelegate SmallJellyMove;// when small jellyfish are eaten by the whale
 
+    public static Action TutorialOff; // Turns off the tutorial splash screen
     public static Action platformTiltTrigger; //score has reached threshold to tilt the platform
     public static Action TiltTrigger; //platform tilting
     public static Action GameOver; //Game Over

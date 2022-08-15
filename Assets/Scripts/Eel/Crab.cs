@@ -19,6 +19,7 @@ public class Crab : MonoBehaviour
         if (collision.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
             GameEvents.FishScore?.Invoke(setScore);
+            GameEvents.TutorialOff?.Invoke();//turn off the tut splash
         }
      
     }

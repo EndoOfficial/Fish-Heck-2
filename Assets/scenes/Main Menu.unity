@@ -321,6 +321,7 @@ MonoBehaviour:
   music: {fileID: 0}
   pauseMenuUI: {fileID: 0}
   GameOverImage: {fileID: 0}
+  TutorialImage: {fileID: 0}
 --- !u!4 &103743170
 Transform:
   m_ObjectHideFlags: 0
@@ -3464,7 +3465,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 103743169}
         m_TargetAssemblyTypeName: UiManager, Assembly-CSharp
-        m_MethodName: LoadSharkLevel
+        m_MethodName: LoadReefLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -9,13 +9,24 @@ public class UiManager : MonoBehaviour
     public GameObject music;
     public GameObject pauseMenuUI;
     public Image GameOverImage;
+    public Image TutorialImage;
     private void OnEnable()
     {
         GameEvents.GameOver += GameOver;
+        GameEvents.TutorialOff += TutorialOff;
     }
     private void OnDisable()
     {
         GameEvents.GameOver -= GameOver;
+        GameEvents.TutorialOff -= TutorialOff;
+    }
+    private void Start()
+    {
+        TutorialImage.enabled = true; 
+    }
+    private void TutorialOff() //turns off the tutorial screen after whatever threshhold picked for each game
+    {
+        TutorialImage.enabled = false;
     }
     private void GameOver()
     {
