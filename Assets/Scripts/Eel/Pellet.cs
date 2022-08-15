@@ -11,9 +11,10 @@ public class Pellet : MonoBehaviour
         // send event for scoring
         if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
         {
+            this.gameObject.SetActive(false); //turn off the object
             GameEvents.FishScore?.Invoke(setScore); //scoring
             GameEvents.PelletCheck?.Invoke(); //checking if the pellets need to be reset
-            this.gameObject.SetActive(false); //turn off the object
+            
         }
     }
 }

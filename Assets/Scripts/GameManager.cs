@@ -115,19 +115,24 @@ public class GameManager : MonoBehaviour
 
     public Transform pellets;
     public Eel eel;
+    public Transform babies;
    
     private bool HasRemainingPellets() //bool that flags whether or not there are still pellets on the field
     {
-        //check for pellets via their transforms
-        foreach (Transform pellets in pellets)
+        if (pellets != null)
         {
-            if (pellets.gameObject.activeSelf)
+            //check for pellets via their transforms
+            foreach (Transform pellets in pellets)
             {
-                return true; // there are still pellets in the scene
+                if (pellets.gameObject.activeSelf)
+                {
+                    return true; // there are still pellets in the scene
+                }
             }
+            Debug.Log("Remaining pellets FALSE");
+            return false; //if there are no more pellets, return false
         }
-        Debug.Log("Remaining pellets FALSE");
-        return false; //if there are no more pellets, return false
+        return false;
     }
     public void PelletEaten() //activates when a pellet is eaten thru events
     {
@@ -140,10 +145,18 @@ public class GameManager : MonoBehaviour
     }
     private void ResetPellets()
     {
-        Debug.Log("ResetPellet");
-        foreach (Transform pellets in pellets) //all the pellets in should turn back on
+        if (pellets != null)
         {
-            pellets.gameObject.SetActive(true);
+            Debug.Log("ResetPellet");
+            foreach (Transform pellet in pellets) //all the pellets in should turn back on
+            {
+                pellet.gameObject.SetActive(true);
+
+            }
+            foreach (Transform baby in babies) //all the pellets in should turn back on
+            {
+                baby.gameObject.SetActive(true);
+            }
         }
     }
 }

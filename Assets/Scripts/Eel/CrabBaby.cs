@@ -14,7 +14,7 @@ public class CrabBaby : MonoBehaviour
         {
             GameEvents.FishScore?.Invoke(setScore);
             GameEvents.CrabSpawn?.Invoke();
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
         }
         //trigger the crab aggro
     }
