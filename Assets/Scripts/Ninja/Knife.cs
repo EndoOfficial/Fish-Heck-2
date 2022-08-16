@@ -56,11 +56,13 @@ public class Knife : MonoBehaviour
                 {
                     //when fish hit, cut fish
                     hitfish.SquidHalf();
+                    GameEvents.TutorialOff?.Invoke();
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("FishHalf"))
                 {
                     //when fish hit, cut fish
                     hitfish.HalfFishCut();
+                    GameEvents.TutorialOff?.Invoke();
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("Pufferfish"))
                 {
@@ -69,6 +71,7 @@ public class Knife : MonoBehaviour
                 else if (hitinfo.transform.gameObject.CompareTag("PufferHalf"))
                 {
                     hitfish.PufferHalf();
+                    GameEvents.TutorialOff?.Invoke();
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("PufferPoison"))
                 {

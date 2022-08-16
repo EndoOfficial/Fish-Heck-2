@@ -22,6 +22,7 @@ public class JellyControl : MonoBehaviour
 
     private float jellyMoveCount;
     private float smallJellyMoveCount;
+    private bool tutorial = false;
 
     // Start is called before the first frame update
     void Start()
@@ -57,7 +58,7 @@ public class JellyControl : MonoBehaviour
         spawnPosition.x = Random.Range(-8f, 8f);
         if (jellyMoveCount >= nCount)
         {
-            Destroy(obj.gameObject);
+            spawnPosition.y += Random.Range(minDist, maxDist);
             jellyMoveCount = 0;
             nCount--;
             if (nCount < 4)
@@ -65,11 +66,8 @@ public class JellyControl : MonoBehaviour
                 nCount = 4;
             }
         }
-        else
-        {
-            obj.transform.position = spawnPosition;
-            jellyMoveCount++;
-        }
+        obj.transform.position = spawnPosition;
+        jellyMoveCount++;
     }
     private void SmallJellyMove(Collider obj)
     {
@@ -78,7 +76,7 @@ public class JellyControl : MonoBehaviour
         smallSpawnPosition.x = Random.Range(-8f, 8f);
         if (smallJellyMoveCount >= sCount)
         {
-            Destroy(obj.gameObject);
+            smallSpawnPosition.y += Random.Range(2f, 5f);
             smallJellyMoveCount = 0;
             sCount--;
             if(sCount < 2)
@@ -86,11 +84,7 @@ public class JellyControl : MonoBehaviour
                 sCount = 2;
             }
         }
-        else
-        {
         obj.transform.position = smallSpawnPosition;
         smallJellyMoveCount++;
-        }
-        
     }
 }

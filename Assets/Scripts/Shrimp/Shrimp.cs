@@ -9,6 +9,7 @@ public class Shrimp : MonoBehaviour
     private Rigidbody rb;
     public Camera cam;
     private Vector2 point;
+    private int tutorial;
     [SerializeField, Range(0, 30)] private float gravity;
 
     private void Start()
@@ -43,6 +44,14 @@ public class Shrimp : MonoBehaviour
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(Vector2.up * jumpforce, ForceMode.Impulse);
                 other.GetComponent<AudioSource>().Play();
+                if (tutorial >= 4)
+                {
+                    GameEvents.TutorialOff?.Invoke();
+                }
+                else
+                {
+                    tutorial++;
+                }
             }
         }
         else if (other.tag == "Jellyfish2")
@@ -52,6 +61,14 @@ public class Shrimp : MonoBehaviour
                 rb.velocity = new Vector2(0, 0);
                 rb.AddForce(Vector2.up * jumpforce/1.5f, ForceMode.Impulse);
                 other.GetComponent<AudioSource>().Play();
+                if (tutorial >= 4)
+                {
+                    GameEvents.TutorialOff?.Invoke();
+                }
+                else
+                {
+                    tutorial++;
+                }
             }
         }
         if (other.tag == "Whale")
