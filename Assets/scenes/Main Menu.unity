@@ -1752,7 +1752,7 @@ GameObject:
   - component: {fileID: 1080336822}
   - component: {fileID: 1080336821}
   m_Layer: 5
-  m_Name: Text (Legacy)
+  m_Name: Credits
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1818,7 +1818,7 @@ MonoBehaviour:
     Art
     By Zachary Cox
 
-    Music by Main Man Ed
+    Music by Edward Bambach
 
 '
 --- !u!222 &1080336822

@@ -66,6 +66,7 @@ public class UiManager : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameEvents.Pause?.Invoke();
+        TutorialOff(); // to stop tut blocking the pause menu
     }
     public void ResumeGame()
     {
