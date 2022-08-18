@@ -14,7 +14,7 @@ public class MusicManager : MonoBehaviour
     }
     private void Update()
     { //starts the next track
-        if (gameManager.playerScore > 5)
+        if (gameManager.playerScore > 150)
         {
             OST1.gameObject.SetActive(false);
             OST2.gameObject.SetActive(true);
