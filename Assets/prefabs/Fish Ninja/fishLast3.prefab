@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1168600961029156217}
   - component: {fileID: 1023997746486806194}
   - component: {fileID: 1504990752863214150}
+  - component: {fileID: 5711982313148329979}
   m_Layer: 6
   m_Name: fishLast3
   m_TagString: FishLast
@@ -139,3 +140,15 @@ MonoBehaviour:
   startForce: 12
   poisoned: 0
   onPlate: 0
+--- !u!114 &5711982313148329979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698753116328964477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca798f94590ab9a4c96e4838610584e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

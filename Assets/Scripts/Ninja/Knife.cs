@@ -7,6 +7,7 @@ public class Knife : MonoBehaviour
 {
     public Camera cam;
     public LayerMask fish;
+    private static bool tutorial = false;
 
     private void OnEnable()
     {
@@ -41,37 +42,72 @@ public class Knife : MonoBehaviour
                 {
                     //when fish hit, cut fish
                     hitfish.FishCut();
+                    if (!tutorial)
+                    {
+                        StartCoroutine(wait());
+                    }
                 }
                 else if (hitfish.transform.CompareTag("BigFish2"))
                 {
                     //when fish hit, cut fish
                     hitfish.FishCut2();
+                    if (!tutorial)
+                    {
+                        StartCoroutine(wait());
+                    }
                 }
                 else if (hitfish.transform.CompareTag("Squid"))
                 {
                     //when fish hit, cut fish
                     hitfish.SquidCut();
+                    if (!tutorial)
+                    {
+                        StartCoroutine(wait());
+                    }
                 }
                 else if (hitfish.transform.CompareTag("SquidHalf"))
                 {
                     //when fish hit, cut fish
                     hitfish.SquidHalf();
+                    if (!tutorial)
+                    {
+                        GameEvents.TutorialStop?.Invoke();
+                        Time.timeScale = 1f;
+                        tutorial = true;
+                    }
                     GameEvents.TutorialOff?.Invoke();
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("FishHalf"))
                 {
                     //when fish hit, cut fish
                     hitfish.HalfFishCut();
+                    if (!tutorial)
+                    {
+                        GameEvents.TutorialStop?.Invoke();
+                        Time.timeScale = 1f;
+                        tutorial = true;
+                    }
                     GameEvents.TutorialOff?.Invoke();
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("Pufferfish"))
                 {
                     hitfish.Puffercut();
+                    if (!tutorial)
+                    {
+                        StartCoroutine(wait());
+                    }
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("PufferHalf"))
                 {
-                    hitfish.PufferHalf();
+                    hitfish.PufferHalf(); 
+                    if (!tutorial)
+                    {
+                        GameEvents.TutorialStop?.Invoke();
+                        Time.timeScale = 1f;
+                        tutorial = true;
+                    }
                     GameEvents.TutorialOff?.Invoke();
+
                 }
                 else if (hitinfo.transform.gameObject.CompareTag("PufferPoison"))
                 {
@@ -82,11 +118,18 @@ public class Knife : MonoBehaviour
                 Destroy(hitfish.gameObject);
                 GameEvents.CutSound?.Invoke();
                 GameEvents.Cut?.Invoke();
+                
             }
         }
         else
         {
 
+        }
+
+        IEnumerator wait()
+        {
+            yield return new WaitForSecondsRealtime(0.1f);
+            GameEvents.TutorialStart?.Invoke();
         }
     }
 }

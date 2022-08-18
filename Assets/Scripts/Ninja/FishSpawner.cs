@@ -20,29 +20,35 @@ public class FishSpawner : MonoBehaviour
     private void OnEnable()
     {
         GameEvents.GameOver += GameOver;
-        GameEvents.Difficulty += Difficulty;
         GameEvents.Pause += Pause;
         GameEvents.Resume += Resume;
+        GameEvents.TutorialStart += TutorialStart;
+        GameEvents.TutorialStop += TutorialStop;
     }
 
     private void OnDisable()
     {
         GameEvents.GameOver -= GameOver;
-        GameEvents.Difficulty -= Difficulty;
         GameEvents.Pause -= Pause;
         GameEvents.Resume -= Resume;
+        GameEvents.TutorialStart -= TutorialStart;
+        GameEvents.TutorialStop -= TutorialStop;
+    }
+
+    private void TutorialStart()
+    {
+        StopAllCoroutines();
+    }
+
+    private void TutorialStop()
+    {
+        StartCoroutine(SpawnFish());
     }
 
     private void GameOver()
     {
         gameOver = true;
         StopAllCoroutines();
-    }
-
-    private void Difficulty()
-    {
-        maxDelay = maxDelay * 0.9f;
-
     }
 
     private void Pause()

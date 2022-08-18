@@ -50,4 +50,6 @@ public static class GameEvents
     public static Action EelReset; //resets eel under lose life conditions
     public static Action CrabSpawn; //spawns a crab
     public static Action PelletCheck; //Pellet checking for resetting
+    public static Action TutorialStart; // frezes the game so the player can read the tutorial text
+    public static Action TutorialStop; // unfreeze the game when the player comletes the tutorial
 }

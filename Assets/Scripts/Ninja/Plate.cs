@@ -5,6 +5,7 @@ using UnityEngine;
 public class Plate : MonoBehaviour
 {
     Rigidbody rb;
+    private int setScore;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,53 @@ public class Plate : MonoBehaviour
                     other.attachedRigidbody.velocity = Vector3.left * 1f;
                     other.attachedRigidbody.angularVelocity = Vector3.zero;
                 }
+                var fish = other.GetComponent<Fish>();
+                if (other.tag == "FishLast")
+                {
+                    if (fish.poisoned)
+                    {
+                        setScore = -1;
+                        GameEvents.FishScore?.Invoke(setScore);
+                    }
+
+                    else
+                    {
+                        setScore = 1;
+                        GameEvents.FishScore?.Invoke(setScore);
+                    }
+                }
+
+                else if (other.tag == "BigFish")
+                {
+                    GameEvents.LoseLife?.Invoke();
+                }
+                else if (other.tag == "BigFish2")
+                {
+                    GameEvents.LoseLife?.Invoke();
+                }
+                else if (other.tag == "Squid")
+                {
+                    GameEvents.LoseLife?.Invoke();
+                }
+                else if (other.tag == "SquidHalf")
+                {
+                    setScore = -2;
+                    GameEvents.FishScore?.Invoke(setScore);
+                }
+                else if (other.tag == "FishHalf")
+                {
+                    setScore = -3;
+                    GameEvents.FishScore?.Invoke(setScore);
+                }
+
+                else if (other.tag == "PufferFish")
+                {
+                    setScore = -4;
+                    GameEvents.FishScore?.Invoke(setScore);
+                    GameEvents.LoseLife?.Invoke();
+                }
             }
+            
         }
     }
 }

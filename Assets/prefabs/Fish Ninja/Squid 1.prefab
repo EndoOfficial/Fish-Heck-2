@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8308992108576736003}
   - component: {fileID: 7876009233547438280}
   - component: {fileID: 8618202144774288444}
+  - component: {fileID: -6018496163965939222}
   m_Layer: 6
   m_Name: Squid 1
   m_TagString: SquidHalf
@@ -140,3 +141,15 @@ MonoBehaviour:
   startForce: 12
   poisoned: 0
   onPlate: 0
+--- !u!114 &-6018496163965939222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 697982102906806023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca798f94590ab9a4c96e4838610584e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

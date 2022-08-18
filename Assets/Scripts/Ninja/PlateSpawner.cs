@@ -35,6 +35,8 @@ public class PlateSpawner : MonoBehaviour
         StartCoroutine(PlateSpawn());
     }
 
+
+
     IEnumerator PlateSpawn()
     {
         //repeat forever even after gameover
