@@ -22,7 +22,10 @@ public class UiManager : MonoBehaviour
     }
     private void Start()
     {
+        if (TutorialImage != null)
+        {
         TutorialImage.enabled = true; 
+        }
     }
     private void TutorialOff() //turns off the tutorial screen after whatever threshhold picked for each game
     {
